@@ -1,6 +1,6 @@
 import 'package:pola_barcodes/barcode_item.dart';
 import 'package:flutter/material.dart';
-import 'barcode_page.dart';
+import 'barcodes_page.dart';
 
 void main() {
   runApp(const MyApp());
