@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'barcode_item.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
-class BarcodePage extends StatelessWidget {
-  const BarcodePage({
+class BarcodesPage extends StatelessWidget {
+  const BarcodesPage({
     super.key,
     required this.barcodes,
   });
@@ -14,9 +14,6 @@ class BarcodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Barcode Generator'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(

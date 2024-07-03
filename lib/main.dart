@@ -1,4 +1,4 @@
-import 'package:barcodes/barcode_item.dart';
+import 'package:pola_barcodes/barcode_item.dart';
 import 'package:flutter/material.dart';
 import 'barcode_page.dart';
 
@@ -12,11 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Barcode Generator',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: BarcodePage(barcodes: BarcodeItem.barcodes),
+      title: 'Kody Testowe Poli',
+     home: BarcodesPage(barcodes: BarcodeItem.barcodes),
     );
   }
 }
