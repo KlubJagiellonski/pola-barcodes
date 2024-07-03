@@ -24,16 +24,6 @@ class BarcodeItem {
         description: "Firma zweryfikowana z niepełną punktacją",
         data: "5900497025454",
         type: Barcode.ean13()),
-    // BarcodeItem(
-    //   description: "Produktu nie ma w bazie",
-    //    data: "5901111111111",
-    //    type: Barcode.ean13()
-    // ),
-    // BarcodeItem(
-    //   description: "Nieprawidłowy kod",
-    //    data: "0011",
-    //    type: Barcode.ean5()
-    // ),
     BarcodeItem(
         description: "Kod wewnętrzny", data: "00000000", type: Barcode.ean8()),
     BarcodeItem(
