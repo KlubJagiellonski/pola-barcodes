@@ -14,7 +14,7 @@ class BarcodeItem {
   static final List<BarcodeItem> barcodes = [
     BarcodeItem(
         description: "Firma nie zweryfikowana",
-        data: "5906395998180",
+        data: "5905499300707",
         type: Barcode.ean13()),
     BarcodeItem(
         description: "Firma zweryfikowana z pełną punktacją",
@@ -25,10 +25,16 @@ class BarcodeItem {
         data: "5900497025454",
         type: Barcode.ean13()),
     BarcodeItem(
-        description: "Kod wewnętrzny", data: "00000000", type: Barcode.ean8()),
+        description: "Kod wewnętrzny",
+         data: "00000000", 
+        type: Barcode.ean8()),
     BarcodeItem(
         description: "Firma zarejestrowana poza Polską",
         data: "8680861069075",
+        type: Barcode.ean13()),
+    BarcodeItem(
+        description: "Firma zarejerstrowana w ...",
+        data: "5090000000006",
         type: Barcode.ean13()),
     BarcodeItem(
         description: "Marka własna Lidla",
