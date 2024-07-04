@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'barcode_item.dart';
 import 'package:barcode_widget/barcode_widget.dart';
+import 'barcode_detail_page.dart';
 
 class BarcodesPage extends StatelessWidget {
   const BarcodesPage({
@@ -8,12 +9,14 @@ class BarcodesPage extends StatelessWidget {
     required this.barcodes,
   });
 
-  
   final List<BarcodeItem> barcodes;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Lista Kodów Kreskowych'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
@@ -26,19 +29,31 @@ class BarcodesPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 4.0),
               child: Row(
                 children: [
-                  Expanded(
-                    child: BarcodeItemWidget(barcode: leftBarcode),
-                  ),
-                  const SizedBox(width: 10), 
+                  _buildBarcodeItem(context, leftBarcode),
+                  const SizedBox(width: 10),
                   if (rightBarcode != null)
-                    Expanded(
-                      child: BarcodeItemWidget(barcode: rightBarcode),
-                    ),
+                    _buildBarcodeItem(context, rightBarcode),
                 ],
               ),
             );
           },
         ),
+      ),
+    );
+  }
+
+  Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BarcodeDetailPage(barcode: barcode),
+            ),
+          );
+        },
+        child: BarcodeItemWidget(barcode: barcode),
       ),
     );
   }
@@ -64,15 +79,15 @@ class BarcodeItemWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 6), 
+        const SizedBox(height: 6),
         BarcodeWidget(
           barcode: barcode.type,
           data: barcode.data,
-          width: 200, 
+          width: 200,
           height: 100,
           drawText: true,
           style: const TextStyle(
-            fontSize: 16, 
+            fontSize: 16,
             letterSpacing: 1.5,
           ),
         ),
