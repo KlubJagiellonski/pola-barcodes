@@ -29,10 +29,10 @@ class BarcodesPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 4.0),
               child: Row(
                 children: [
-                  buildBarcodeItem(context, leftBarcode),
+                  _buildBarcodeItem(context, leftBarcode),
                   const SizedBox(width: 10),
                   if (rightBarcode != null)
-                    buildBarcodeItem(context, rightBarcode),
+                    _buildBarcodeItem(context, rightBarcode),
                 ],
               ),
             );
@@ -42,7 +42,7 @@ class BarcodesPage extends StatelessWidget {
     );
   }
 
-  Widget buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
+  Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
