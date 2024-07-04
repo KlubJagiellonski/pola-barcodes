@@ -29,14 +29,10 @@ class BarcodesPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 4.0),
               child: Row(
                 children: [
-                  Expanded(
-                    child: buildBarcodeItem(context, leftBarcode),
-                  ),
+                  buildExpandedBarcodeItem(context, leftBarcode),
                   const SizedBox(width: 10),
                   if (rightBarcode != null)
-                    Expanded(
-                      child: buildBarcodeItem(context, rightBarcode),
-                    ),
+                    buildExpandedBarcodeItem(context, rightBarcode),
                 ],
               ),
             );
@@ -46,7 +42,13 @@ class BarcodesPage extends StatelessWidget {
     );
   }
 
-  Widget buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
+  Widget buildExpandedBarcodeItem(BuildContext context, BarcodeItem barcode) {
+    return Expanded(
+      child: _buildBarcodeItem(context, barcode),
+    );
+  }
+
+  Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
