@@ -25,9 +25,7 @@ class BarcodeItem {
         data: "5900497025454",
         type: Barcode.ean13()),
     BarcodeItem(
-        description: "Kod wewnętrzny",
-         data: "00000000", 
-        type: Barcode.ean8()),
+        description: "Kod wewnętrzny", data: "00000000", type: Barcode.ean8()),
     BarcodeItem(
         description: "Firma zarejestrowana poza Polską",
         data: "8680861069075",

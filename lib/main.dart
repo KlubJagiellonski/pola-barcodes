@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kody Testowe Poli',
-     home: BarcodesPage(barcodes: BarcodeItem.barcodes),
+      home: BarcodesPage(barcodes: BarcodeItem.barcodes),
     );
   }
 }
