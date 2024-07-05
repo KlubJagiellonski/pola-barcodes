@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'barcode_item.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'barcode_detail_page.dart';
@@ -29,10 +29,10 @@ class BarcodesPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 4.0),
               child: Row(
                 children: [
-                  _buildBarcodeItem(context, leftBarcode),
+                  buildBarcodeItem(context, leftBarcode),
                   const SizedBox(width: 10),
                   if (rightBarcode != null)
-                    _buildBarcodeItem(context, rightBarcode),
+                    buildBarcodeItem(context, rightBarcode),
                 ],
               ),
             );
@@ -42,7 +42,7 @@ class BarcodesPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
+  Widget buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
