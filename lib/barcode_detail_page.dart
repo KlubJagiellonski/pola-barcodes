@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'barcode_item.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
