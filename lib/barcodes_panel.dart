@@ -63,3 +63,4 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     );
   }
 }
+

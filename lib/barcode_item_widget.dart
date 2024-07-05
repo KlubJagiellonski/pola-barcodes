@@ -38,3 +38,4 @@ class BarcodeItemWidget extends StatelessWidget {
     );
   }
 }
+

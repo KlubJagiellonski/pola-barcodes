@@ -27,3 +27,5 @@ class BarcodeDetailPage extends StatelessWidget {
     );
   }
 }
+
+

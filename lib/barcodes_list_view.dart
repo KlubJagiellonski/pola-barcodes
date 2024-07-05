@@ -32,35 +32,26 @@ class BarcodesListView extends StatelessWidget {
   Widget _buildBarcodeRow(BuildContext context, BarcodeItem leftBarcode, BarcodeItem? rightBarcode) {
     return Row(
       children: [
-        Expanded(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BarcodeDetailPage(barcode: leftBarcode),
-                ),
-              );
-            },
-            child: BarcodeItemWidget(barcode: leftBarcode),
-          ),
-        ),
+        _buildBarcodeItem(context, leftBarcode),
         const SizedBox(width: 10),
-        if (rightBarcode != null)
-          Expanded(
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BarcodeDetailPage(barcode: rightBarcode),
-                  ),
-                );
-              },
-              child: BarcodeItemWidget(barcode: rightBarcode),
-            ),
-          ),
+        if (rightBarcode != null) _buildBarcodeItem(context, rightBarcode),
       ],
+    );
+  }
+
+  Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BarcodeDetailPage(barcode: barcode),
+            ),
+          );
+        },
+        child: BarcodeItemWidget(barcode: barcode),
+      ),
     );
   }
 }
