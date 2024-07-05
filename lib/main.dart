@@ -1,5 +1,5 @@
-import 'package:pola_barcodes/barcode_item.dart';
 import 'package:flutter/material.dart';
+import 'barcode_item.dart';
 import 'barcodes_page.dart';
 
 void main() {
@@ -13,10 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kody Testowe Poli',
-     home: BarcodesPage(barcodes: BarcodeItem.barcodes),
+      home: BarcodesPage(barcodes: BarcodeItem.barcodes),
     );
   }
 }
-
-
-
