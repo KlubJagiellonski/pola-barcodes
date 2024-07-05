@@ -58,7 +58,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     return Expanded(
       child: DropdownButtonFormField<String>(
         value: _selectedBarcodeType,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           labelText: "Typ kodu",
         ),
         items: const [
