@@ -50,4 +50,3 @@ class BarcodeItem {
         type: Barcode.ean13()),
   ];
 }
-
