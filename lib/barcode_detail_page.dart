@@ -9,19 +9,25 @@ class BarcodeDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Opis Kodu Kreskowego'),
-        automaticallyImplyLeading: false, // removes button "Back"
-      ),
+    return Scaffold( 
       body: Center(
-        child: BarcodeWidget(
-          barcode: barcode.type,
-          data: barcode.data,
-          width: 300,
-          height: 150,
-          drawText: true,
-          style: const TextStyle(fontSize: 16, letterSpacing: 1.5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              barcode.description,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            BarcodeWidget(
+              barcode: barcode.type,
+              data: barcode.data,
+              width: 300,
+              height: 150,
+              drawText: true,
+              style: const TextStyle(fontSize: 16, letterSpacing: 1.5),
+            ),
+          ],
         ),
       ),
     );
