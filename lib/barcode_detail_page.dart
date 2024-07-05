@@ -9,12 +9,7 @@ class BarcodeDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false, // Usuwa przycisk "Back"
-        elevation: 0, // Usuwa cień z AppBar
-        backgroundColor: Colors.transparent, // Ustawia tło AppBar na przezroczyste
-      ),
+    return Scaffold( 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
