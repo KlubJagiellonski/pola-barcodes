@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AddBarcodeForm extends StatefulWidget {
-  final void Function(String description, String data) onAddBarcode;
+class BarcodesPanel extends StatelessWidget {
+  const BarcodesPanel({
+    super.key,
+    required this.descriptionController,
+    required this.dataController,
+    required this.onAddBarcode,
+  });
 
-  const AddBarcodeForm({super.key, required this.onAddBarcode});
-
-  @override
-  State<AddBarcodeForm> createState() => _AddBarcodeFormState();
-}
-
-class _AddBarcodeFormState extends State<AddBarcodeForm> {
-  final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController _dataController = TextEditingController();
-
-  void _handleAddBarcode() {
-    final description = _descriptionController.text;
-    final data = _dataController.text;
-
-    if (description.isNotEmpty && data.isNotEmpty) {
-      widget.onAddBarcode(description, data);
-      _descriptionController.clear();
-      _dataController.clear();
-    }
-  }
+  final TextEditingController descriptionController;
+  final TextEditingController dataController;
+  final VoidCallback onAddBarcode;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +20,7 @@ class _AddBarcodeFormState extends State<AddBarcodeForm> {
         children: [
           Expanded(
             child: TextField(
-              controller: _descriptionController,
+              controller: descriptionController,
               decoration: const InputDecoration(
                 labelText: 'Opis',
               ),
@@ -41,7 +29,7 @@ class _AddBarcodeFormState extends State<AddBarcodeForm> {
           const SizedBox(width: 10),
           Expanded(
             child: TextField(
-              controller: _dataController,
+              controller: dataController,
               decoration: const InputDecoration(
                 labelText: 'Kod kreskowy',
               ),
@@ -49,7 +37,7 @@ class _AddBarcodeFormState extends State<AddBarcodeForm> {
           ),
           const SizedBox(width: 10),
           ElevatedButton(
-            onPressed: _handleAddBarcode,
+            onPressed: onAddBarcode,
             child: const Text('Dodaj kod kreskowy'),
           ),
         ],

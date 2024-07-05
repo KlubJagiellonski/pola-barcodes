@@ -1,7 +1,6 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'barcode_item.dart';
-import 'barcode_detail_page.dart';
 import 'barcodes_list_view.dart';
 import 'barcodes_panel.dart';
 
@@ -18,16 +17,27 @@ class BarcodesPage extends StatefulWidget {
 }
 
 class BarcodesPageState extends State<BarcodesPage> {
-  void _addBarcode(String description, String data) {
-    setState(() {
-      widget.barcodes.add(
-        BarcodeItem(
-          description: description,
-          data: data,
-          type: Barcode.ean13(),
-        ),
-      );
-    });
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _dataController = TextEditingController();
+
+  void _addBarcode() {
+    final description = _descriptionController.text;
+    final data = _dataController.text;
+
+    if (description.isNotEmpty && data.isNotEmpty) {
+      setState(() {
+        widget.barcodes.add(
+          BarcodeItem(
+            description: description,
+            data: data,
+            type: Barcode.ean13(),
+          ),
+        );
+      });
+
+      _descriptionController.clear();
+      _dataController.clear();
+    }
   }
 
   @override
@@ -41,55 +51,14 @@ class BarcodesPageState extends State<BarcodesPage> {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                itemCount: (widget.barcodes.length / 2).ceil(),
-                itemBuilder: (context, index) {
-                  final leftBarcode = widget.barcodes[index * 2];
-                  final rightBarcode = (index * 2 + 1 < widget.barcodes.length)
-                      ? widget.barcodes[index * 2 + 1]
-                      : null;
-
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      BarcodeDetailPage(barcode: leftBarcode),
-                                ),
-                              );
-                            },
-                            child: BarcodeItemWidget(barcode: leftBarcode),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        if (rightBarcode != null)
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        BarcodeDetailPage(barcode: rightBarcode),
-                                  ),
-                                );
-                              },
-                              child: BarcodeItemWidget(barcode: rightBarcode),
-                            ),
-                          ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+              child: BarcodesListView(barcodes: widget.barcodes),
             ),
-            AddBarcodeForm(onAddBarcode: _addBarcode),
+            const SizedBox(height: 8.0),
+            BarcodesPanel(
+              descriptionController: _descriptionController,
+              dataController: _dataController,
+              onAddBarcode: _addBarcode,
+            ),
           ],
         ),
       ),
