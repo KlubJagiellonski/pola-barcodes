@@ -17,13 +17,7 @@ class BarcodesPage extends StatefulWidget {
 }
 
 class BarcodesPageState extends State<BarcodesPage> {
-  final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController _dataController = TextEditingController();
-
-  void _addBarcode() {
-    final description = _descriptionController.text;
-    final data = _dataController.text;
-
+  void _addBarcode(String description, String data) {
     if (description.isNotEmpty && data.isNotEmpty) {
       setState(() {
         widget.barcodes.add(
@@ -34,9 +28,6 @@ class BarcodesPageState extends State<BarcodesPage> {
           ),
         );
       });
-
-      _descriptionController.clear();
-      _dataController.clear();
     }
   }
 
@@ -54,11 +45,7 @@ class BarcodesPageState extends State<BarcodesPage> {
               child: BarcodesListView(barcodes: widget.barcodes),
             ),
             const SizedBox(height: 8.0),
-            BarcodesPanel(
-              descriptionController: _descriptionController,
-              dataController: _dataController,
-              onAddBarcode: _addBarcode,
-            ),
+            BarcodesPanel(onAddBarcode: _addBarcode),
           ],
         ),
       ),
