@@ -9,10 +9,10 @@ class BarcodesPanel extends StatefulWidget {
   final void Function(String description, String data) onAddBarcode;
 
   @override
-  _BarcodesPanelState createState() => _BarcodesPanelState();
+  BarcodesPanelState createState() => BarcodesPanelState();
 }
 
-class _BarcodesPanelState extends State<BarcodesPanel> {
+class BarcodesPanelState extends State<BarcodesPanel> {
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _dataController = TextEditingController();
 
@@ -33,40 +33,33 @@ class _BarcodesPanelState extends State<BarcodesPanel> {
     _dataController.clear();
   }
 
+  Widget _textField(TextEditingController controller, String label) {
+    return Expanded(
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _descriptionController,
-                  decoration: const InputDecoration(
-                    labelText: 'Opis',
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  controller: _dataController,
-                  decoration: const InputDecoration(
-                    labelText: 'Kod kreskowy',
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: _handleAddBarcode,
-                child: const Text('Dodaj kod kreskowy'),
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          _textField(_descriptionController, "Opis"),
+          const SizedBox(width: 10),
+          _textField(_dataController, "Kod kreskowy"),
+          const SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: _handleAddBarcode,
+            child: const Text('Dodaj kod kreskowy'),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
