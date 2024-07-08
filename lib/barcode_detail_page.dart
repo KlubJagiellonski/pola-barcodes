@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'barcode_item.dart';
-import 'barcode_item_widget.dart'; 
+import 'barcode_item_widget.dart';
 
 class BarcodeDetailPage extends StatelessWidget {
   final BarcodeItem barcode;
@@ -11,7 +11,12 @@ class BarcodeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: BarcodeItemWidget(barcode: barcode),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BarcodeItemWidget(barcode: barcode),
+          ],
+        ),
       ),
     );
   }
