@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
+import 'barcode_type.dart' as custom;
 
 class BarcodesPanel extends StatefulWidget {
   const BarcodesPanel({
@@ -16,7 +17,7 @@ class BarcodesPanel extends StatefulWidget {
 class BarcodesPanelState extends State<BarcodesPanel> {
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _dataController = TextEditingController();
-  String _selectedBarcodeType = 'EAN13';
+  custom.BarcodeType _selectedBarcodeType = custom.BarcodeType.ean13;
 
   @override
   void dispose() {
@@ -28,13 +29,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
   void _handleAddBarcode() {
     final description = _descriptionController.text;
     final data = _dataController.text;
-
-    Barcode barcodeType;
-    if (_selectedBarcodeType == 'EAN13') {
-      barcodeType = Barcode.ean13();
-    } else {
-      barcodeType = Barcode.ean8();
-    }
+    final barcodeType = _selectedBarcodeType.barcode;
 
     if (description.isNotEmpty && data.isNotEmpty) {
       widget.onAddBarcode(description, data, barcodeType);
@@ -56,22 +51,18 @@ class BarcodesPanelState extends State<BarcodesPanel> {
 
   Widget _dropdownField() {
     return Expanded(
-      child: DropdownButtonFormField<String>(
+      child: DropdownButtonFormField<custom.BarcodeType>(
         value: _selectedBarcodeType,
         decoration: const InputDecoration(
           labelText: "Typ kodu",
         ),
-        items: const [
-          DropdownMenuItem(
-            value: 'EAN13',
-            child: Text("EAN13"),
-          ),
-          DropdownMenuItem(
-            value: 'EAN8',
-            child: Text("EAN8"),
-          ),
-        ],
-        onChanged: (String? newValue) {
+        items: custom.BarcodeType.values.map((custom.BarcodeType type) {
+          return DropdownMenuItem<custom.BarcodeType>(
+            value: type,
+            child: Text(type.name),
+          );
+        }).toList(),
+        onChanged: (custom.BarcodeType? newValue) {
           setState(() {
             if (newValue != null) {
               _selectedBarcodeType = newValue;
