@@ -17,14 +17,14 @@ class BarcodesPage extends StatefulWidget {
 }
 
 class BarcodesPageState extends State<BarcodesPage> {
-  void _addBarcode(String description, String data) {
+  void _addBarcode(String description, String data, Barcode type) {
     if (description.isNotEmpty && data.isNotEmpty) {
       setState(() {
         widget.barcodes.add(
           BarcodeItem(
             description: description,
             data: data,
-            type: Barcode.ean13(),
+            type: type,
           ),
         );
       });
