@@ -19,6 +19,9 @@ class BarcodesPanelState extends State<BarcodesPanel> {
   final TextEditingController _dataController = TextEditingController();
   custom.BarcodeType _selectedBarcodeType = custom.BarcodeType.ean13;
 
+  String? _descriptionError;
+  String? _dataError;
+
   @override
   void dispose() {
     _descriptionController.dispose();
@@ -31,19 +34,36 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     final data = _dataController.text;
     final barcodeType = _selectedBarcodeType.barcode;
 
-    if (description.isNotEmpty && data.isNotEmpty) {
-      widget.onAddBarcode(description, data, barcodeType);
-      _descriptionController.clear();
-      _dataController.clear();
-    }
+    setState(() {
+      _descriptionError = description.isEmpty ? "Opis nie może być pusty" : null;
+      _dataError = data.isEmpty ? "Kod kreskowy nie może być pusty" : null;
+
+      if (_descriptionError == null && _dataError == null) {
+        try {
+          // Próbujemy stworzyć widżet BarcodeWidget, aby sprawdzić poprawność kodu kreskowego
+          BarcodeWidget(
+            barcode: barcodeType,
+            data: data,
+            width: 200,
+            height: 100,
+          );
+          widget.onAddBarcode(description, data, barcodeType);
+          _descriptionController.clear();
+          _dataController.clear();
+        } catch (e) {
+          _dataError = "Nieprawidłowy kod kreskowy";
+        }
+      }
+    });
   }
 
-  Widget _textField(TextEditingController controller, String label) {
+  Widget _textField(TextEditingController controller, String label, String? errorText) {
     return Expanded(
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
+          errorText: errorText,
         ),
       ),
     );
@@ -81,9 +101,9 @@ class BarcodesPanelState extends State<BarcodesPanel> {
         children: [
           Row(
             children: [
-              _textField(_descriptionController, "Opis"),
+              _textField(_descriptionController, "Opis", _descriptionError),
               const SizedBox(width: 10),
-              _textField(_dataController, "Kod kreskowy"),
+              _textField(_dataController, "Kod kreskowy", _dataError),
               const SizedBox(width: 10),
               _dropdownField(),
               const SizedBox(width: 10),
