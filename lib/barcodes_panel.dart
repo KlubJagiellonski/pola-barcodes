@@ -122,7 +122,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
               _dropdownField(),
               const SizedBox(width: _Constants.fieldSpacing),
               Padding(
-                padding: const EdgeInsets.only(top: _Constants.topPadding),
+                padding: const EdgeInsets.only(bottom: _Constants.bottomPadding),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
                   child: const Text('Dodaj kod kreskowy'),
@@ -139,5 +139,5 @@ class BarcodesPanelState extends State<BarcodesPanel> {
 class _Constants {
   static const double errorHeight = 20.0;
   static const double fieldSpacing = 10.0;
-  static const double topPadding = 20.0;
+  static const double bottomPadding = 20.0;
 }
