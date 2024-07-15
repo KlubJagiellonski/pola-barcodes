@@ -23,4 +23,13 @@ extension BarcodeTypeExtension on BarcodeType {
         return Barcode.ean8();
     }
   }
+
+  bool isValid(String data) {
+    switch (this) {
+      case BarcodeType.ean13:
+        return data.length == 13 && RegExp(r'^\d+$').hasMatch(data);
+      case BarcodeType.ean8:
+        return data.length == 8 && RegExp(r'^\d+$').hasMatch(data);
+    }
+  }
 }

@@ -32,25 +32,18 @@ class BarcodesPanelState extends State<BarcodesPanel> {
   void _handleAddBarcode() {
     final description = _descriptionController.text;
     final data = _dataController.text;
-    final barcodeType = _selectedBarcodeType.barcode;
+    final barcodeType = _selectedBarcodeType;
 
     setState(() {
       _descriptionError = description.isEmpty ? "Opis nie może być pusty" : null;
       _dataError = data.isEmpty ? "Kod kreskowy nie może być pusty" : null;
 
       if (_descriptionError == null && _dataError == null) {
-        try {
-          // Próbujemy stworzyć widżet BarcodeWidget, aby sprawdzić poprawność kodu kreskowego
-          BarcodeWidget(
-            barcode: barcodeType,
-            data: data,
-            width: 200,
-            height: 100,
-          );
-          widget.onAddBarcode(description, data, barcodeType);
+        if (barcodeType.isValid(data)) {
+          widget.onAddBarcode(description, data, barcodeType.barcode);
           _descriptionController.clear();
           _dataController.clear();
-        } catch (e) {
+        } else {
           _dataError = "Nieprawidłowy kod kreskowy";
         }
       }
