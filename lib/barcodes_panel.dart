@@ -52,36 +52,58 @@ class BarcodesPanelState extends State<BarcodesPanel> {
 
   Widget _textField(TextEditingController controller, String label, String? errorText) {
     return Expanded(
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          errorText: errorText,
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              labelText: label,
+              // Usunięcie errorText z InputDecoration
+              // errorText: errorText,
+            ),
+          ),
+          const SizedBox(height: 5),
+          SizedBox(
+            height: 20, // Zarezerwowanie miejsca na komunikat o błędzie
+            child: errorText != null
+                ? Text(
+                    errorText,
+                    style: const TextStyle(color: Colors.red, fontSize: 12),
+                  )
+                : null,
+          ),
+        ],
       ),
     );
   }
 
   Widget _dropdownField() {
     return Expanded(
-      child: DropdownButtonFormField<custom.BarcodeType>(
-        value: _selectedBarcodeType,
-        decoration: const InputDecoration(
-          labelText: "Typ kodu",
-        ),
-        items: custom.BarcodeType.values.map((custom.BarcodeType type) {
-          return DropdownMenuItem<custom.BarcodeType>(
-            value: type,
-            child: Text(type.name),
-          );
-        }).toList(),
-        onChanged: (custom.BarcodeType? newValue) {
-          setState(() {
-            if (newValue != null) {
-              _selectedBarcodeType = newValue;
-            }
-          });
-        },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          DropdownButtonFormField<custom.BarcodeType>(
+            value: _selectedBarcodeType,
+            decoration: const InputDecoration(
+              labelText: "Typ kodu",
+            ),
+            items: custom.BarcodeType.values.map((custom.BarcodeType type) {
+              return DropdownMenuItem<custom.BarcodeType>(
+                value: type,
+                child: Text(type.name),
+              );
+            }).toList(),
+            onChanged: (custom.BarcodeType? newValue) {
+              setState(() {
+                if (newValue != null) {
+                  _selectedBarcodeType = newValue;
+                }
+              });
+            },
+          ),
+          const SizedBox(height: 20), // Dodanie odstępu, aby wyrównać z polami tekstowymi
+        ],
       ),
     );
   }
@@ -93,6 +115,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
       child: Column(
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _textField(_descriptionController, "Opis", _descriptionError),
               const SizedBox(width: 10),
@@ -100,9 +123,12 @@ class BarcodesPanelState extends State<BarcodesPanel> {
               const SizedBox(width: 10),
               _dropdownField(),
               const SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: _handleAddBarcode,
-                child: const Text('Dodaj kod kreskowy'),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0), // Wyrównanie przycisku z polami tekstowymi
+                child: ElevatedButton(
+                  onPressed: _handleAddBarcode,
+                  child: const Text('Dodaj kod kreskowy'),
+                ),
               ),
             ],
           ),
