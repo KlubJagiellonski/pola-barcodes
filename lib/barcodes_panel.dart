@@ -39,7 +39,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
       _dataError = data.isEmpty ? "Kod kreskowy nie może być pusty" : null;
 
       if (_descriptionError == null && _dataError == null) {
-        if (barcodeType.isValid(data)) {
+        if (barcodeType.barcode.isValid(data)) {
           widget.onAddBarcode(description, data, barcodeType.barcode);
           _descriptionController.clear();
           _dataController.clear();
