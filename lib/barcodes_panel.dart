@@ -59,13 +59,11 @@ class BarcodesPanelState extends State<BarcodesPanel> {
             controller: controller,
             decoration: InputDecoration(
               labelText: label,
-              // Usunięcie errorText z InputDecoration
-              // errorText: errorText,
             ),
           ),
           const SizedBox(height: 5),
           SizedBox(
-            height: 20, // Zarezerwowanie miejsca na komunikat o błędzie
+            height: _Constants.errorHeight,
             child: errorText != null
                 ? Text(
                     errorText,
@@ -102,7 +100,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
               });
             },
           ),
-          const SizedBox(height: 20), // Dodanie odstępu, aby wyrównać z polami tekstowymi
+          const SizedBox(height: _Constants.errorHeight),
         ],
       ),
     );
@@ -118,13 +116,13 @@ class BarcodesPanelState extends State<BarcodesPanel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _textField(_descriptionController, "Opis", _descriptionError),
-              const SizedBox(width: 10),
+              const SizedBox(width: _Constants.fieldSpacing),
               _textField(_dataController, "Kod kreskowy", _dataError),
-              const SizedBox(width: 10),
+              const SizedBox(width: _Constants.fieldSpacing),
               _dropdownField(),
-              const SizedBox(width: 10),
+              const SizedBox(width: _Constants.fieldSpacing),
               Padding(
-                padding: const EdgeInsets.only(top: 20.0), // Wyrównanie przycisku z polami tekstowymi
+                padding: const EdgeInsets.only(top: _Constants.topPadding),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
                   child: const Text('Dodaj kod kreskowy'),
@@ -136,4 +134,10 @@ class BarcodesPanelState extends State<BarcodesPanel> {
       ),
     );
   }
+}
+
+class _Constants {
+  static const double errorHeight = 20.0;
+  static const double fieldSpacing = 10.0;
+  static const double topPadding = 20.0;
 }
