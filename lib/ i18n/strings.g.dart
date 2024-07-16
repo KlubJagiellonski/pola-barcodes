@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 18
+/// Strings: 19
 ///
-/// Built on 2024-07-16 at 06:05 UTC
+/// Built on 2024-07-16 at 09:22 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -156,6 +156,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get error1 => 'Description cannot be empty';
 	String get error2 => 'Barcode cannot be empty';
 	String get error3 => 'Invalid barcode';
+	String get codetype => 'Code type';
 	String get dsc1 => 'Company not verified';
 	String get dsc2 => 'Company verified with full scores';
 	String get dsc3 => 'Company verified with incomplete scores';
@@ -182,6 +183,7 @@ extension on Translations {
 			case 'error1': return 'Description cannot be empty';
 			case 'error2': return 'Barcode cannot be empty';
 			case 'error3': return 'Invalid barcode';
+			case 'codetype': return 'Code type';
 			case 'dsc1': return 'Company not verified';
 			case 'dsc2': return 'Company verified with full scores';
 			case 'dsc3': return 'Company verified with incomplete scores';

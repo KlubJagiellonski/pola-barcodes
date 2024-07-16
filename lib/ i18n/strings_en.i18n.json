@@ -8,6 +8,7 @@
 "error1": "Description cannot be empty",
 "error2": "Barcode cannot be empty",
 "error3": "Invalid barcode",
+"codetype": "Code type",
 "dsc1": "Company not verified",
 "dsc2": "Company verified with full scores",
 "dsc3": "Company verified with incomplete scores",

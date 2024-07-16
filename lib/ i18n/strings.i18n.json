@@ -8,6 +8,7 @@
     "error1": "Opis nie może być pusty",
     "error2": "Kod kreskowy nie może być pusty",
     "error3": "Nieprawidłowy kod kreskowy",
+    "codetype": "Typ kodu",
     "barcodesDescription": {
     "dsc1": "Firma nie zweryfikowana",
     "dsc2": "Firma zweryfikowana z pełną punktacją",

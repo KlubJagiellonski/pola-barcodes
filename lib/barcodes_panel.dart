@@ -44,7 +44,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           widget.onAddBarcode(description, data, barcodeType.barcode);
           _descriptionController.clear();
           _dataController.clear();
-        } catch (e) {
+        } else  {
           _dataError =  Translations.of(context).error3;
         }
       }
@@ -78,15 +78,15 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     );
   }
 
-  Widget _dropdownField() {
-    return Expanded(
+  Widget _dropdownField(BuildContext context) {
+       return  Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+         children: [
           DropdownButtonFormField<custom.BarcodeType>(
             value: _selectedBarcodeType,
-            decoration: const InputDecoration(
-              labelText: "Typ kodu",
+            decoration: InputDecoration(
+              labelText:  Translations.of(context).codetype,
             ),
             items: custom.BarcodeType.values.map((custom.BarcodeType type) {
               return DropdownMenuItem<custom.BarcodeType>(
@@ -121,13 +121,13 @@ class BarcodesPanelState extends State<BarcodesPanel> {
               const SizedBox(width: Constants.fieldSpacing),
               _textField(_dataController,  Translations.of(context).kod, _dataError),
               const SizedBox(width: Constants.fieldSpacing),
-              _dropdownField(),
+              _dropdownField(context),
               const SizedBox(width: Constants.fieldSpacing),
               Padding(
                 padding: const EdgeInsets.only(top: Constants.errorHeight),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
-                  child: const Text (Translations.of(context).kodplus),
+                  child:  Text (Translations.of(context).kodplus),
                 ),
               ),
             ],
