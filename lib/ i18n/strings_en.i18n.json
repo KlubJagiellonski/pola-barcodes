@@ -1,0 +1,20 @@
+{
+"app_title": "poly test codes",
+"title1": "Barcode List",
+"opis": "Description",
+"kod": "Barcode",
+"kodplus": "Add Barcode",
+"typ": "Code Type",
+"error1": "Description cannot be empty",
+"error2": "Barcode cannot be empty",
+"error3": "Invalid barcode",
+"dsc1": "Company not verified",
+"dsc2": "Company verified with full scores",
+"dsc3": "Company verified with incomplete scores",
+"dsc4": "Internal Code",
+"dsc5": "Company registered outside Poland",
+"dsc6": "Company registered in...",
+"dsc7": "Lidl's own brand",
+"dsc8": "Pola's Friend",
+"dsc9": "Extended company description"
+}

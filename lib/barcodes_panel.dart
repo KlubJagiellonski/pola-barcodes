@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'barcode_type.dart' as custom;
-
+import ' i18n/strings.g.dart';
 class BarcodesPanel extends StatefulWidget {
   const BarcodesPanel({
     super.key,
@@ -36,17 +36,16 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     final barcodeType = _selectedBarcodeType;
 
     setState(() {
-      _descriptionError =
-          description.isEmpty ? "Opis nie może być pusty" : null;
-      _dataError = data.isEmpty ? "Kod kreskowy nie może być pusty" : null;
+      _descriptionError = description.isEmpty ? Translations.of(context).error1:  null;
+      _dataError = data.isEmpty ?  Translations.of(context).error2 : null;
 
       if (_descriptionError == null && _dataError == null) {
         if (barcodeType.barcode.isValid(data)) {
           widget.onAddBarcode(description, data, barcodeType.barcode);
           _descriptionController.clear();
           _dataController.clear();
-        } else {
-          _dataError = "Nieprawidłowy kod kreskowy";
+        } catch (e) {
+          _dataError =  Translations.of(context).error3;
         }
       }
     });
@@ -118,9 +117,9 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _textField(_descriptionController, "Opis", _descriptionError),
+              _textField(_descriptionController, Translations.of(context).opis, _descriptionError),
               const SizedBox(width: Constants.fieldSpacing),
-              _textField(_dataController, "Kod kreskowy", _dataError),
+              _textField(_dataController,  Translations.of(context).kod, _dataError),
               const SizedBox(width: Constants.fieldSpacing),
               _dropdownField(),
               const SizedBox(width: Constants.fieldSpacing),
@@ -128,7 +127,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
                 padding: const EdgeInsets.only(top: Constants.errorHeight),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
-                  child: const Text('Dodaj kod kreskowy'),
+                  child: const Text (Translations.of(context).kodplus),
                 ),
               ),
             ],
