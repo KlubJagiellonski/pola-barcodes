@@ -63,7 +63,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           ),
           const SizedBox(height: 5),
           SizedBox(
-            height: _Constants.errorHeight,
+            height: Constants.errorHeight, // Zarezerwowanie miejsca na komunikat o błędzie
             child: errorText != null
                 ? Text(
                     errorText,
@@ -100,7 +100,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
               });
             },
           ),
-          const SizedBox(height: _Constants.errorHeight),
+          const SizedBox(height: Constants.errorHeight)
         ],
       ),
     );
@@ -116,13 +116,13 @@ class BarcodesPanelState extends State<BarcodesPanel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _textField(_descriptionController, "Opis", _descriptionError),
-              const SizedBox(width: _Constants.fieldSpacing),
+              const SizedBox(width: Constants.fieldSpacing),
               _textField(_dataController, "Kod kreskowy", _dataError),
-              const SizedBox(width: _Constants.fieldSpacing),
+              const SizedBox(width: Constants.fieldSpacing),
               _dropdownField(),
-              const SizedBox(width: _Constants.fieldSpacing),
+              const SizedBox(width: Constants.fieldSpacing),
               Padding(
-                padding: const EdgeInsets.only(bottom: _Constants.bottomPadding),
+                padding: const EdgeInsets.only(top: Constants.errorHeight),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
                   child: const Text('Dodaj kod kreskowy'),
@@ -136,8 +136,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
   }
 }
 
-class _Constants {
+class Constants {
   static const double errorHeight = 20.0;
   static const double fieldSpacing = 10.0;
-  static const double bottomPadding = 20.0;
 }
