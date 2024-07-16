@@ -66,8 +66,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           ),
           const SizedBox(height: 5),
           SizedBox(
-            height: Constants
-                .errorHeight, // Zarezerwowanie miejsca na komunikat o błędzie
+            height: Constants.errorHeight,
             child: errorText != null
                 ? Text(
                     errorText,
