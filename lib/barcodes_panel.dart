@@ -8,7 +8,8 @@ class BarcodesPanel extends StatefulWidget {
     required this.onAddBarcode,
   });
 
-  final void Function(String description, String data, Barcode type) onAddBarcode;
+  final void Function(String description, String data, Barcode type)
+      onAddBarcode;
 
   @override
   BarcodesPanelState createState() => BarcodesPanelState();
@@ -35,7 +36,8 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     final barcodeType = _selectedBarcodeType;
 
     setState(() {
-      _descriptionError = description.isEmpty ? "Opis nie może być pusty" : null;
+      _descriptionError =
+          description.isEmpty ? "Opis nie może być pusty" : null;
       _dataError = data.isEmpty ? "Kod kreskowy nie może być pusty" : null;
 
       if (_descriptionError == null && _dataError == null) {
@@ -50,7 +52,8 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     });
   }
 
-  Widget _textField(TextEditingController controller, String label, String? errorText) {
+  Widget _textField(
+      TextEditingController controller, String label, String? errorText) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +66,8 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           ),
           const SizedBox(height: 5),
           SizedBox(
-            height: Constants.errorHeight, // Zarezerwowanie miejsca na komunikat o błędzie
+            height: Constants
+                .errorHeight, // Zarezerwowanie miejsca na komunikat o błędzie
             child: errorText != null
                 ? Text(
                     errorText,
