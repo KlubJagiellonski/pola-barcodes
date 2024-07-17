@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'barcode_type.dart' as custom;
 import ' i18n/strings.g.dart';
+
 class BarcodesPanel extends StatefulWidget {
   const BarcodesPanel({
     super.key,
@@ -36,16 +37,17 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     final barcodeType = _selectedBarcodeType;
 
     setState(() {
-      _descriptionError = description.isEmpty ? Translations.of(context).error1:  null;
-      _dataError = data.isEmpty ?  Translations.of(context).error2 : null;
+      _descriptionError =
+          description.isEmpty ? Translations.of(context).error1 : null;
+      _dataError = data.isEmpty ? Translations.of(context).error2 : null;
 
       if (_descriptionError == null && _dataError == null) {
         if (barcodeType.barcode.isValid(data)) {
           widget.onAddBarcode(description, data, barcodeType.barcode);
           _descriptionController.clear();
           _dataController.clear();
-        } else  {
-          _dataError =  Translations.of(context).error3;
+        } else {
+          _dataError = Translations.of(context).error3;
         }
       }
     });
@@ -79,14 +81,14 @@ class BarcodesPanelState extends State<BarcodesPanel> {
   }
 
   Widget _dropdownField(BuildContext context) {
-       return  Expanded(
+    return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-         children: [
+        children: [
           DropdownButtonFormField<custom.BarcodeType>(
             value: _selectedBarcodeType,
             decoration: InputDecoration(
-              labelText:  Translations.of(context).codetype,
+              labelText: Translations.of(context).codetype,
             ),
             items: custom.BarcodeType.values.map((custom.BarcodeType type) {
               return DropdownMenuItem<custom.BarcodeType>(
@@ -109,7 +111,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
   }
 
   @override
-  Widget build( BuildContext context) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -117,9 +119,11 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _textField(_descriptionController, Translations.of(context).opis, _descriptionError),
+              _textField(_descriptionController, Translations.of(context).opis,
+                  _descriptionError),
               const SizedBox(width: Constants.fieldSpacing),
-              _textField(_dataController,  Translations.of(context).kod, _dataError),
+              _textField(
+                  _dataController, Translations.of(context).kod, _dataError),
               const SizedBox(width: Constants.fieldSpacing),
               _dropdownField(context),
               const SizedBox(width: Constants.fieldSpacing),
@@ -127,7 +131,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
                 padding: const EdgeInsets.only(top: Constants.errorHeight),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
-                  child:  Text (Translations.of(context).kodplus),
+                  child: Text(Translations.of(context).kodplus),
                 ),
               ),
             ],

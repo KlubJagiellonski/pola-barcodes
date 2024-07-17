@@ -4,9 +4,9 @@ import 'barcode_item.dart';
 import 'barcodes_page.dart';
 
 void main() {
-   WidgetsFlutterBinding.ensureInitialized(); 
-   LocaleSettings.useDeviceLocale();
-   runApp(TranslationProvider(child: MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
+  runApp(TranslationProvider(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title:  (Translations.of(context).app_title),
-      home: BarcodesPage(barcodes: BarcodeItem.barcodes(Translations.of(context))),
+      title: (Translations.of(context).app_title),
+      home: BarcodesPage(
+          barcodes: BarcodeItem.barcodes(Translations.of(context))),
     );
   }
 }

@@ -36,7 +36,7 @@ class BarcodesPageState extends State<BarcodesPage> {
   Widget build(context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text(Translations.of(context).title1),
+        title: Text(Translations.of(context).title1),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
