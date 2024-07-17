@@ -1,0 +1,24 @@
+{
+    "appTitle": "poly test codes",
+    "barcodeList": "Barcode List",
+    "description": "Description",
+    "code": "Barcode",
+    "addCode": "Add Barcode",
+    "error": {
+        "emptyDescription": "Description cannot be empty",
+        "emptyCode": "Barcode cannot be empty",
+        "invalidCode": "Invalid barcode"
+    },
+    "codeType": "Code type",
+    "barcodesDescription": {
+        "companyNotVerified": "Company not verified",
+        "companyVerifiedWithFullScores": "Company verified with full scores",
+        "companyVerifiedWithIncompleteScores": "Company verified with incomplete scores",
+        "internalCode": "Internal Code",
+        "companyRegisteredOutsidePoland": "Company registered outside Poland",
+        "companyRegisteredIn": "Company registered in...",
+        "lidlOwnBrand": "Lidl's own brand",
+        "polaFriend": "Pola's Friend",
+        "extendedCompanyDescription": "Extended company description"
+    }
+}

@@ -3,10 +3,10 @@
 /// Original: lib/ i18n
 /// To regenerate, run: `dart run slang`
 ///
-/// Locales: 1
-/// Strings: 19
+/// Locales: 2
+/// Strings: 36 (18 per locale)
 ///
-/// Built on 2024-07-17 at 11:41 UTC
+/// Built on 2024-07-17 at 12:15 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -25,7 +25,8 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-	en(languageCode: 'en', build: Translations.build);
+	en(languageCode: 'en', build: Translations.build),
+	pl(languageCode: 'pl', build: _StringsPl.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -152,7 +153,6 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get description => 'Description';
 	String get code => 'Barcode';
 	String get addCode => 'Add Barcode';
-	String get codeTyp => 'Code Type';
 	late final _StringsErrorEn error = _StringsErrorEn._(_root);
 	String get codeType => 'Code type';
 	late final _StringsBarcodesDescriptionEn barcodesDescription = _StringsBarcodesDescriptionEn._(_root);
@@ -188,6 +188,70 @@ class _StringsBarcodesDescriptionEn {
 	String get extendedCompanyDescription => 'Extended company description';
 }
 
+// Path: <root>
+class _StringsPl implements Translations {
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	_StringsPl.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.pl,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <pl>.
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
+
+	/// Access flat map
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
+
+	@override late final _StringsPl _root = this; // ignore: unused_field
+
+	// Translations
+	@override String get appTitle => 'Kody testowe poli';
+	@override String get barcodeList => 'Lista Kodów Kreskowych';
+	@override String get description => 'Opis';
+	@override String get code => 'Kod kreskowy';
+	@override String get addCode => 'Dodaj kod kreskowy';
+	@override late final _StringsErrorPl error = _StringsErrorPl._(_root);
+	@override String get codeType => 'Typ kodu';
+	@override late final _StringsBarcodesDescriptionPl barcodesDescription = _StringsBarcodesDescriptionPl._(_root);
+}
+
+// Path: error
+class _StringsErrorPl implements _StringsErrorEn {
+	_StringsErrorPl._(this._root);
+
+	@override final _StringsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get emptyDescription => 'Opis nie może być pusty';
+	@override String get emptyCode => 'Kod kreskowy nie może być pusty';
+	@override String get invalidCode => 'Nieprawidłowy kod kreskowy';
+}
+
+// Path: barcodesDescription
+class _StringsBarcodesDescriptionPl implements _StringsBarcodesDescriptionEn {
+	_StringsBarcodesDescriptionPl._(this._root);
+
+	@override final _StringsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get companyNotVerified => 'Firma nie zweryfikowana';
+	@override String get companyVerifiedWithFullScores => 'Firma zweryfikowana z pełną punktacją';
+	@override String get companyVerifiedWithIncompleteScores => 'Firma zweryfikowana z niepełną punktacją';
+	@override String get internalCode => 'Kod wewnętrzny';
+	@override String get companyRegisteredOutsidePoland => 'Firma zarejestrowana poza Polską';
+	@override String get companyRegisteredIn => 'Firma zarejerstrowana w ...';
+	@override String get lidlOwnBrand => 'Marka własna Lidla';
+	@override String get polaFriend => 'Przyjaciel Poli';
+	@override String get extendedCompanyDescription => 'Rozszerzony opis firmy';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -199,7 +263,6 @@ extension on Translations {
 			case 'description': return 'Description';
 			case 'code': return 'Barcode';
 			case 'addCode': return 'Add Barcode';
-			case 'codeTyp': return 'Code Type';
 			case 'error.emptyDescription': return 'Description cannot be empty';
 			case 'error.emptyCode': return 'Barcode cannot be empty';
 			case 'error.invalidCode': return 'Invalid barcode';
@@ -213,6 +276,32 @@ extension on Translations {
 			case 'barcodesDescription.lidlOwnBrand': return 'Lidl\'s own brand';
 			case 'barcodesDescription.polaFriend': return 'Pola\'s Friend';
 			case 'barcodesDescription.extendedCompanyDescription': return 'Extended company description';
+			default: return null;
+		}
+	}
+}
+
+extension on _StringsPl {
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'appTitle': return 'Kody testowe poli';
+			case 'barcodeList': return 'Lista Kodów Kreskowych';
+			case 'description': return 'Opis';
+			case 'code': return 'Kod kreskowy';
+			case 'addCode': return 'Dodaj kod kreskowy';
+			case 'error.emptyDescription': return 'Opis nie może być pusty';
+			case 'error.emptyCode': return 'Kod kreskowy nie może być pusty';
+			case 'error.invalidCode': return 'Nieprawidłowy kod kreskowy';
+			case 'codeType': return 'Typ kodu';
+			case 'barcodesDescription.companyNotVerified': return 'Firma nie zweryfikowana';
+			case 'barcodesDescription.companyVerifiedWithFullScores': return 'Firma zweryfikowana z pełną punktacją';
+			case 'barcodesDescription.companyVerifiedWithIncompleteScores': return 'Firma zweryfikowana z niepełną punktacją';
+			case 'barcodesDescription.internalCode': return 'Kod wewnętrzny';
+			case 'barcodesDescription.companyRegisteredOutsidePoland': return 'Firma zarejestrowana poza Polską';
+			case 'barcodesDescription.companyRegisteredIn': return 'Firma zarejerstrowana w ...';
+			case 'barcodesDescription.lidlOwnBrand': return 'Marka własna Lidla';
+			case 'barcodesDescription.polaFriend': return 'Przyjaciel Poli';
+			case 'barcodesDescription.extendedCompanyDescription': return 'Rozszerzony opis firmy';
 			default: return null;
 		}
 	}
