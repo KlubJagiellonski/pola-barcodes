@@ -1,23 +1,25 @@
 {
-    "app_title": "Kody testowe poli",
+    "appTitle": "Kody testowe poli",
     "title1": "Lista Kodów Kreskowych",
-    "opis": "Opis",
-    "kod": "Kod kreskowy",
-    "kodplus": "Dodaj kod kreskowy",
-    "typ": "Typ kodu",
-    "error1": "Opis nie może być pusty",
-    "error2": "Kod kreskowy nie może być pusty",
-    "error3": "Nieprawidłowy kod kreskowy",
-    "codetype": "Typ kodu",
+    "description": "Opis",
+    "code": "Kod kreskowy",
+    "addCode": "Dodaj kod kreskowy",
+    "type": "Typ kodu",
+    "error": {
+        "emptyDescription": "Opis nie może być pusty",
+        "emptoCode": "Kod kreskowy nie może być pusty",
+        "invalidCode": "Nieprawidłowy kod kreskowy"
+    },
+    "codeType": "Typ kodu",
     "barcodesDescription": {
-    "dsc1": "Firma nie zweryfikowana",
-    "dsc2": "Firma zweryfikowana z pełną punktacją",
-    "dsc3": "Firma zweryfikowana z niepełną punktacją",
-    "dsc4": "Kod wewnętrzny",
-    "dsc5": "Firma zarejestrowana poza Polską",
-    "dsc6": "Firma zarejerstrowana w ...",
-    "dsc7": "Marka własna Lidla",
-    "dsc8": "Przyjaciel Poli",
-    "dsc9": "Rozszerzony opis firmy"
+        "companyNotVerified": "Firma nie zweryfikowana",
+        "companyVerifiedWithFullScores": "Firma zweryfikowana z pełną punktacją",
+        "companyVerifiedWithIncompleteScores": "Firma zweryfikowana z niepełną punktacją",
+        "internalCode": "Kod wewnętrzny",
+        "companyRegisteredOutsidePoland": "Firma zarejestrowana poza Polską",
+        "companyRegisteredIn": "Firma zarejerstrowana w ...",
+        "lidlOwnBrand": "Marka własna Lidla",
+        "polaFriend": "Przyjaciel Poli",
+        "extendedCompanyDescription": "Rozszerzony opis firmy"
     }
-}
+    }

@@ -15,39 +15,39 @@ class BarcodeItem {
   static List<BarcodeItem> barcodes(Translations translations) {
     return [
       BarcodeItem(
-          description: translations.dsc1,
+          description: translations.barcodesDescription.companyNotVerified,
           data: "5905499300707",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.dsc2,
+          description: translations.barcodesDescription.companyVerifiedWithFullScores,
           data: "5907632637572",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.dsc3,
+          description: translations.barcodesDescription.companyVerifiedWithIncompleteScores,
           data: "5900497025454",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.dsc4,
+          description: translations.barcodesDescription.internalCode,
           data: "00000000",
           type: Barcode.ean8()),
       BarcodeItem(
-          description: translations.dsc5,
+          description: translations.barcodesDescription.companyRegisteredOutsidePoland,
           data: "8680861069075",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.dsc6,
+          description: translations.barcodesDescription.companyRegisteredIn,
           data: "5090000000006",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.dsc7,
+          description: translations.barcodesDescription.lidlOwnBrand,
           data: "20982515",
           type: Barcode.ean8()),
       BarcodeItem(
-          description: translations.dsc8,
+          description: translations.barcodesDescription.polaFriend,
           data: "5906395053018",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.dsc9,
+          description: translations.barcodesDescription.extendedCompanyDescription,
           data: "9771644705002",
           type: Barcode.ean13()),
     ];

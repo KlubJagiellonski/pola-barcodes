@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: (Translations.of(context).app_title),
+      title: (Translations.of(context).appTitle),
       home: BarcodesPage(
           barcodes: BarcodeItem.barcodes(Translations.of(context))),
     );

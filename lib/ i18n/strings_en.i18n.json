@@ -1,21 +1,25 @@
 {
-"app_title": "poly test codes",
-"title1": "Barcode List",
-"opis": "Description",
-"kod": "Barcode",
-"kodplus": "Add Barcode",
-"typ": "Code Type",
-"error1": "Description cannot be empty",
-"error2": "Barcode cannot be empty",
-"error3": "Invalid barcode",
-"codetype": "Code type",
-"dsc1": "Company not verified",
-"dsc2": "Company verified with full scores",
-"dsc3": "Company verified with incomplete scores",
-"dsc4": "Internal Code",
-"dsc5": "Company registered outside Poland",
-"dsc6": "Company registered in...",
-"dsc7": "Lidl's own brand",
-"dsc8": "Pola's Friend",
-"dsc9": "Extended company description"
+    "appTitle": "poly test codes",
+    "title1": "Barcode List",
+    "description": "Description",
+    "code": "Barcode",
+    "addCode": "Add Barcode",
+    "type": "Code Type",
+    "error": {
+        "emptyDescription": "Description cannot be empty",
+        "emptyCode": "Barcode cannot be empty",
+        "invalidCode": "Invalid barcode"
+    },
+    "codetype": "Code type",
+    "barcodesDescription": {
+        "companyNotVerified": "Company not verified",
+        "companyVerifiedWithFullScores": "Company verified with full scores",
+        "companyVerifiedWithIncompleteScores": "Company verified with incomplete scores",
+        "internalCode": "Internal Code",
+        "companyRegisteredOutsidePoland": "Company registered outside Poland",
+        "companyRegisteredIn": "Company registered in...",
+        "lidlOwnBrand": "Lidl's own brand",
+        "polaFriend": "Pola's Friend",
+        "extendedCompanyDescription": "Extended company description"
+    }
 }

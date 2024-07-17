@@ -38,8 +38,8 @@ class BarcodesPanelState extends State<BarcodesPanel> {
 
     setState(() {
       _descriptionError =
-          description.isEmpty ? Translations.of(context).error1 : null;
-      _dataError = data.isEmpty ? Translations.of(context).error2 : null;
+          description.isEmpty ? Translations.of(context).error.emptyDescription : null;
+      _dataError = data.isEmpty ? Translations.of(context).error.emptyCode : null;
 
       if (_descriptionError == null && _dataError == null) {
         if (barcodeType.barcode.isValid(data)) {
@@ -47,7 +47,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           _descriptionController.clear();
           _dataController.clear();
         } else {
-          _dataError = Translations.of(context).error3;
+          _dataError = Translations.of(context).error.invalidCode;
         }
       }
     });
@@ -119,11 +119,11 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _textField(_descriptionController, Translations.of(context).opis,
+              _textField(_descriptionController, Translations.of(context).description,
                   _descriptionError),
               const SizedBox(width: Constants.fieldSpacing),
               _textField(
-                  _dataController, Translations.of(context).kod, _dataError),
+                  _dataController, Translations.of(context).code, _dataError),
               const SizedBox(width: Constants.fieldSpacing),
               _dropdownField(context),
               const SizedBox(width: Constants.fieldSpacing),
@@ -131,7 +131,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
                 padding: const EdgeInsets.only(top: Constants.errorHeight),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
-                  child: Text(Translations.of(context).kodplus),
+                  child: Text(Translations.of(context).addCode),
                 ),
               ),
             ],
