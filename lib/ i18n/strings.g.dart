@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 19
 ///
-/// Built on 2024-07-17 at 09:30 UTC
+/// Built on 2024-07-17 at 11:41 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,13 +148,13 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get appTitle => 'poly test codes';
-	String get title1 => 'Barcode List';
+	String get barcodeList => 'Barcode List';
 	String get description => 'Description';
 	String get code => 'Barcode';
 	String get addCode => 'Add Barcode';
-	String get type => 'Code Type';
+	String get codeTyp => 'Code Type';
 	late final _StringsErrorEn error = _StringsErrorEn._(_root);
-	String get codetype => 'Code type';
+	String get codeType => 'Code type';
 	late final _StringsBarcodesDescriptionEn barcodesDescription = _StringsBarcodesDescriptionEn._(_root);
 }
 
@@ -195,15 +195,15 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'appTitle': return 'poly test codes';
-			case 'title1': return 'Barcode List';
+			case 'barcodeList': return 'Barcode List';
 			case 'description': return 'Description';
 			case 'code': return 'Barcode';
 			case 'addCode': return 'Add Barcode';
-			case 'type': return 'Code Type';
+			case 'codeTyp': return 'Code Type';
 			case 'error.emptyDescription': return 'Description cannot be empty';
 			case 'error.emptyCode': return 'Barcode cannot be empty';
 			case 'error.invalidCode': return 'Invalid barcode';
-			case 'codetype': return 'Code type';
+			case 'codeType': return 'Code type';
 			case 'barcodesDescription.companyNotVerified': return 'Company not verified';
 			case 'barcodesDescription.companyVerifiedWithFullScores': return 'Company verified with full scores';
 			case 'barcodesDescription.companyVerifiedWithIncompleteScores': return 'Company verified with incomplete scores';

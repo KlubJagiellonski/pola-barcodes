@@ -1,16 +1,16 @@
 {
     "appTitle": "poly test codes",
-    "title1": "Barcode List",
+    "barcodeList": "Barcode List",
     "description": "Description",
     "code": "Barcode",
     "addCode": "Add Barcode",
-    "type": "Code Type",
+    "codeTyp": "Code Type",
     "error": {
         "emptyDescription": "Description cannot be empty",
         "emptyCode": "Barcode cannot be empty",
         "invalidCode": "Invalid barcode"
     },
-    "codetype": "Code type",
+    "codeType": "Code type",
     "barcodesDescription": {
         "companyNotVerified": "Company not verified",
         "companyVerifiedWithFullScores": "Company verified with full scores",

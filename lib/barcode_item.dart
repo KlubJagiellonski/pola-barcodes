@@ -19,11 +19,13 @@ class BarcodeItem {
           data: "5905499300707",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.barcodesDescription.companyVerifiedWithFullScores,
+          description:
+              translations.barcodesDescription.companyVerifiedWithFullScores,
           data: "5907632637572",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.barcodesDescription.companyVerifiedWithIncompleteScores,
+          description: translations
+              .barcodesDescription.companyVerifiedWithIncompleteScores,
           data: "5900497025454",
           type: Barcode.ean13()),
       BarcodeItem(
@@ -31,7 +33,8 @@ class BarcodeItem {
           data: "00000000",
           type: Barcode.ean8()),
       BarcodeItem(
-          description: translations.barcodesDescription.companyRegisteredOutsidePoland,
+          description:
+              translations.barcodesDescription.companyRegisteredOutsidePoland,
           data: "8680861069075",
           type: Barcode.ean13()),
       BarcodeItem(
@@ -47,7 +50,8 @@ class BarcodeItem {
           data: "5906395053018",
           type: Barcode.ean13()),
       BarcodeItem(
-          description: translations.barcodesDescription.extendedCompanyDescription,
+          description:
+              translations.barcodesDescription.extendedCompanyDescription,
           data: "9771644705002",
           type: Barcode.ean13()),
     ];

@@ -1,10 +1,10 @@
 {
     "appTitle": "Kody testowe poli",
-    "title1": "Lista Kodów Kreskowych",
+    "barcodeList": "Lista Kodów Kreskowych",
     "description": "Opis",
     "code": "Kod kreskowy",
     "addCode": "Dodaj kod kreskowy",
-    "type": "Typ kodu",
+    "Codetyp": "Typ kodu",
     "error": {
         "emptyDescription": "Opis nie może być pusty",
         "emptoCode": "Kod kreskowy nie może być pusty",
