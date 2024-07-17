@@ -33,7 +33,7 @@ class BarcodesPageState extends State<BarcodesPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       appBar: AppBar(
         title:  Text(Translations.of(context).title1),

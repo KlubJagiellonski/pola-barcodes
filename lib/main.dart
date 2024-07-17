@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:  (Translations.of(context).app_title),
-      home: BarcodesPage(barcodes: BarcodeItem.barcodes(context)),
+      home: BarcodesPage(barcodes: BarcodeItem.barcodes(Translations.of(context))),
     );
   }
 }

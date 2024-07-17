@@ -13,40 +13,42 @@ class BarcodeItem {
     required this.type,
   });
 
- static List<BarcodeItem> barcodes(BuildContext context){
+ static List<BarcodeItem> barcodes(Translations translations){
   return [
     BarcodeItem(
-        description: Translations.of(context).dsc1,
+        description: translations.dsc1,
         data: "5905499300707",
         type: Barcode.ean13()),
     BarcodeItem(
-        description:  Translations.of(context).dsc2,
+        description:  translations.dsc2,
         data: "5907632637572",
         type: Barcode.ean13()),
     BarcodeItem(
-        description:  Translations.of(context).dsc3,
+        description:  translations.dsc3,
         data: "5900497025454",
         type: Barcode.ean13()),
     BarcodeItem(
-        description:  Translations.of(context).dsc4 ,data: "00000000", type: Barcode.ean8()),
+        description:  translations.dsc4 ,
+        data: "00000000", 
+        type: Barcode.ean8()),
     BarcodeItem(
-        description:  Translations.of(context).dsc5,
+        description:  translations.dsc5,
         data: "8680861069075",
         type: Barcode.ean13()),
     BarcodeItem(
-        description:  Translations.of(context).dsc6,
+        description:  translations.dsc6,
         data: "5090000000006",
         type: Barcode.ean13()),
     BarcodeItem(
-        description:  Translations.of(context).dsc7,
+        description:  translations.dsc7,
         data: "20982515",
         type: Barcode.ean8()),
     BarcodeItem(
-        description:  Translations.of(context).dsc8,
+        description:  translations.dsc8,
         data: "5906395053018",
         type: Barcode.ean13()),
     BarcodeItem(
-        description:  Translations.of(context).dsc9,
+        description:  translations.dsc9,
         data: "9771644705002",
         type: Barcode.ean13()),
   ];

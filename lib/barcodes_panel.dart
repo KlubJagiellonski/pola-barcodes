@@ -102,14 +102,14 @@ class BarcodesPanelState extends State<BarcodesPanel> {
               });
             },
           ),
-          const SizedBox(height: Constants.errorHeight)
+          const SizedBox(height: Constants.errorHeight),
         ],
       ),
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build( BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
