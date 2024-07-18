@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import ' i18n/strings.g.dart';
+import 'i18n/strings.g.dart';
 import 'barcode_item.dart';
 import 'barcodes_page.dart';
 
@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final translations = Translations.of(context);
     return MaterialApp(
-      title: (Translations.of(context).appTitle),
+      title: (translations.appTitle),
       home: BarcodesPage(
-          barcodes: BarcodeItem.barcodes(Translations.of(context))),
+          barcodes: BarcodeItem.barcodes(translations)),
     );
   }
 }

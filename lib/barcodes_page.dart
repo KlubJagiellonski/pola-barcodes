@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'barcode_item.dart';
 import 'barcodes_list_view.dart';
 import 'barcodes_panel.dart';
-import ' i18n/strings.g.dart';
+import 'i18n/strings.g.dart';
 
 class BarcodesPage extends StatefulWidget {
   const BarcodesPage({

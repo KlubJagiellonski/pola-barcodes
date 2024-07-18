@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'barcode_type.dart' as custom;
-import ' i18n/strings.g.dart';
+import 'i18n/strings.g.dart';
 
 class BarcodesPanel extends StatefulWidget {
   const BarcodesPanel({
@@ -36,12 +36,13 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     final data = _dataController.text;
     final barcodeType = _selectedBarcodeType;
 
-    setState(() {
+    setState(()  {
+      final translations = Translations.of(context);
       _descriptionError = description.isEmpty
-          ? Translations.of(context).error.emptyDescription
+          ? translations.error.emptyDescription
           : null;
       _dataError =
-          data.isEmpty ? Translations.of(context).error.emptyCode : null;
+          data.isEmpty ? translations.error.emptyCode : null;
 
       if (_descriptionError == null && _dataError == null) {
         if (barcodeType.barcode.isValid(data)) {
@@ -49,7 +50,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           _descriptionController.clear();
           _dataController.clear();
         } else {
-          _dataError = Translations.of(context).error.invalidCode;
+          _dataError = translations.error.invalidCode;
         }
       }
     });

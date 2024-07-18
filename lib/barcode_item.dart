@@ -1,5 +1,5 @@
 import 'package:barcode_widget/barcode_widget.dart';
-import ' i18n/strings.g.dart';
+import 'i18n/strings.g.dart';
 
 class BarcodeItem {
   final String description;
