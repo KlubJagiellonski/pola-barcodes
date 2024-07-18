@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'barcode_type.dart' as custom;
+import 'i18n/strings.g.dart';
 
 class BarcodesPanel extends StatefulWidget {
   const BarcodesPanel({
@@ -35,10 +36,13 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     final data = _dataController.text;
     final barcodeType = _selectedBarcodeType;
 
-    setState(() {
-      _descriptionError =
-          description.isEmpty ? "Opis nie może być pusty" : null;
-      _dataError = data.isEmpty ? "Kod kreskowy nie może być pusty" : null;
+    setState(()  {
+      final translations = Translations.of(context);
+      _descriptionError = description.isEmpty
+          ? translations.error.emptyDescription
+          : null;
+      _dataError =
+          data.isEmpty ? translations.error.emptyCode : null;
 
       if (_descriptionError == null && _dataError == null) {
         if (barcodeType.barcode.isValid(data)) {
@@ -46,7 +50,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           _descriptionController.clear();
           _dataController.clear();
         } else {
-          _dataError = "Nieprawidłowy kod kreskowy";
+          _dataError = translations.error.invalidCode;
         }
       }
     });
@@ -79,15 +83,15 @@ class BarcodesPanelState extends State<BarcodesPanel> {
     );
   }
 
-  Widget _dropdownField() {
+  Widget _dropdownField(BuildContext context) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DropdownButtonFormField<custom.BarcodeType>(
             value: _selectedBarcodeType,
-            decoration: const InputDecoration(
-              labelText: "Typ kodu",
+            decoration: InputDecoration(
+              labelText: Translations.of(context).codeType,
             ),
             items: custom.BarcodeType.values.map((custom.BarcodeType type) {
               return DropdownMenuItem<custom.BarcodeType>(
@@ -103,7 +107,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
               });
             },
           ),
-          const SizedBox(height: Constants.errorHeight)
+          const SizedBox(height: Constants.errorHeight),
         ],
       ),
     );
@@ -118,17 +122,19 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _textField(_descriptionController, "Opis", _descriptionError),
+              _textField(_descriptionController,
+                  Translations.of(context).description, _descriptionError),
               const SizedBox(width: Constants.fieldSpacing),
-              _textField(_dataController, "Kod kreskowy", _dataError),
+              _textField(
+                  _dataController, Translations.of(context).code, _dataError),
               const SizedBox(width: Constants.fieldSpacing),
-              _dropdownField(),
+              _dropdownField(context),
               const SizedBox(width: Constants.fieldSpacing),
               Padding(
                 padding: const EdgeInsets.only(top: Constants.errorHeight),
                 child: ElevatedButton(
                   onPressed: _handleAddBarcode,
-                  child: const Text('Dodaj kod kreskowy'),
+                  child: Text(Translations.of(context).addCode),
                 ),
               ),
             ],

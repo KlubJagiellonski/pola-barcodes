@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'barcode_item.dart';
 import 'barcodes_list_view.dart';
 import 'barcodes_panel.dart';
+import 'i18n/strings.g.dart';
 
 class BarcodesPage extends StatefulWidget {
   const BarcodesPage({
@@ -32,10 +33,10 @@ class BarcodesPageState extends State<BarcodesPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Lista Kodów Kreskowych'),
+        title: Text(Translations.of(context).barcodeList)
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

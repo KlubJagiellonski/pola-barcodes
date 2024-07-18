@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'i18n/strings.g.dart';
 import 'barcode_item.dart';
 import 'barcodes_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
+  runApp(TranslationProvider(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final translations = Translations.of(context);
     return MaterialApp(
-      title: 'Kody Testowe Poli',
-      home: BarcodesPage(barcodes: BarcodeItem.barcodes),
+      title: (translations.appTitle),
+      home: BarcodesPage(
+          barcodes: BarcodeItem.barcodes(translations)),
     );
   }
 }
