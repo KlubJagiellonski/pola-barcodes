@@ -89,7 +89,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DropdownButtonFormField<custom.BarcodeType>(
-            value: _selectedBarcodeType,
+            initialValue: _selectedBarcodeType,
             decoration: InputDecoration(
               labelText: Translations.of(context).codeType,
             ),
