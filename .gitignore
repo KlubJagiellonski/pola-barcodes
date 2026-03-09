@@ -31,6 +31,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Generated files (slang i18n)
+lib/i18n/strings.g.dart
+
 # Symbolication related
 app.*.symbols
 

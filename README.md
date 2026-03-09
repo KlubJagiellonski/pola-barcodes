@@ -1,16 +1,32 @@
 # pola_barcodes
 
-A new Flutter project.
+A Flutter web application for displaying and managing barcodes used in the Pola project.
 
-## Getting Started
+## Internationalization (i18n)
 
-This project is a starting point for a Flutter application.
+This project uses [slang](https://pub.dev/packages/slang) for internationalization.
+Translation source files are located in `lib/i18n/` (e.g. `strings.i18n.json`, `strings-pl.i18n.json`).
 
-A few resources to get you started if this is your first Flutter project:
+The generated Dart file (`lib/i18n/strings.g.dart`) is **not** committed to the repository.
+It must be generated before building or running the app:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+flutter pub get
+dart run slang
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Development
+
+```bash
+flutter pub get
+dart run slang
+flutter run -d chrome
+```
+
+## Building
+
+```bash
+flutter pub get
+dart run slang
+flutter build web
+```
