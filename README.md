@@ -2,6 +2,8 @@
 
 A Flutter web application for displaying and managing barcodes used in the Pola project.
 
+**Live app:** https://klubjagiellonski.github.io/pola-barcodes/
+
 ## Internationalization (i18n)
 
 This project uses [slang](https://pub.dev/packages/slang) for internationalization.
