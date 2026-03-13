@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:barcode_widget/barcode_widget.dart';
 import 'barcode_type.dart' as custom;
 import 'i18n/strings.g.dart';
 
@@ -9,7 +8,8 @@ class BarcodesPanel extends StatefulWidget {
     required this.onAddBarcode,
   });
 
-  final void Function(String description, String data, Barcode type)
+  final void Function(
+          String description, String data, custom.BarcodeType type)
       onAddBarcode;
 
   @override
@@ -46,7 +46,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
 
       if (_descriptionError == null && _dataError == null) {
         if (barcodeType.barcode.isValid(data)) {
-          widget.onAddBarcode(description, data, barcodeType.barcode);
+          widget.onAddBarcode(description, data, barcodeType);
           _descriptionController.clear();
           _dataController.clear();
         } else {
@@ -96,7 +96,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
             items: custom.BarcodeType.values.map((custom.BarcodeType type) {
               return DropdownMenuItem<custom.BarcodeType>(
                 value: type,
-                child: Text(type.name),
+                child: Text(type.displayName),
               );
             }).toList(),
             onChanged: (custom.BarcodeType? newValue) {

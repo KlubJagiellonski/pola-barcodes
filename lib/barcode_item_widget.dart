@@ -24,7 +24,7 @@ class BarcodeItemWidget extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         BarcodeWidget(
-          barcode: barcode.type,
+          barcode: barcode.type.barcode,
           data: barcode.data,
           width: 200,
           height: 100,
