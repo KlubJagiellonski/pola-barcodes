@@ -34,8 +34,7 @@ migrate_working_dir/
 # Generated files (slang i18n)
 lib/i18n/strings.g.dart
 
-# Generated files (freezed / json_serializable)
-lib/**/*.freezed.dart
+# Generated files (json_serializable)
 lib/**/*.g.dart
 
 # Symbolication related

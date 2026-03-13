@@ -1,22 +1,41 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'barcode_type.dart';
 import 'i18n/strings.g.dart';
 
-part 'barcode_item.freezed.dart';
 part 'barcode_item.g.dart';
 
-@freezed
-class BarcodeItem with _$BarcodeItem {
-  const BarcodeItem._();
+@JsonSerializable()
+class BarcodeItem {
+  const BarcodeItem({
+    required this.description,
+    required this.data,
+    required this.type,
+  });
 
-  const factory BarcodeItem({
-    required String description,
-    required String data,
-    required BarcodeType type,
-  }) = _BarcodeItem;
+  final String description;
+  final String data;
+  final BarcodeType type;
 
   factory BarcodeItem.fromJson(Map<String, dynamic> json) =>
       _$BarcodeItemFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BarcodeItemToJson(this);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BarcodeItem &&
+          runtimeType == other.runtimeType &&
+          description == other.description &&
+          data == other.data &&
+          type == other.type;
+
+  @override
+  int get hashCode => Object.hash(description, data, type);
+
+  @override
+  String toString() =>
+      'BarcodeItem(description: $description, data: $data, type: $type)';
 
   static List<BarcodeItem> barcodes(Translations translations) {
     return [

@@ -32,7 +32,6 @@ dependencies:
     sdk: flutter
   barcode_widget: ^2.0.1
   cupertino_icons: ^1.0.6
-  freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
   slang: ^4.13.0
   slang_flutter: ^4.13.0
@@ -49,7 +48,6 @@ dev_dependencies:
   # rules and activating additional ones.
   build_runner: ^2.4.9
   flutter_lints: ^6.0.0
-  freezed: ^2.5.7
   json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
