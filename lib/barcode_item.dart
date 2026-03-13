@@ -21,22 +21,6 @@ class BarcodeItem {
 
   Map<String, dynamic> toJson() => _$BarcodeItemToJson(this);
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BarcodeItem &&
-          runtimeType == other.runtimeType &&
-          description == other.description &&
-          data == other.data &&
-          type == other.type;
-
-  @override
-  int get hashCode => Object.hash(description, data, type);
-
-  @override
-  String toString() =>
-      'BarcodeItem(description: $description, data: $data, type: $type)';
-
   static List<BarcodeItem> barcodes(Translations translations) {
     return [
       BarcodeItem(
