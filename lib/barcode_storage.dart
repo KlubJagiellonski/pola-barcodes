@@ -1,12 +1,11 @@
 import 'dart:convert';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
 import 'barcode_item.dart';
 
 const _storageKey = 'pola_barcodes';
 
 List<BarcodeItem>? loadBarcodesFromStorage() {
-  final raw = html.window.localStorage[_storageKey];
+  final raw = web.window.localStorage.getItem(_storageKey);
   if (raw == null) return null;
   try {
     final list = jsonDecode(raw) as List<dynamic>;
@@ -23,5 +22,5 @@ List<BarcodeItem>? loadBarcodesFromStorage() {
 void saveBarcodesToStorage(List<BarcodeItem> barcodes) {
   final encoded =
       jsonEncode(barcodes.map((e) => e.toJson()).toList());
-  html.window.localStorage[_storageKey] = encoded;
+  web.window.localStorage.setItem(_storageKey, encoded);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'barcode_item.dart';
+import 'barcode_type.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
 class BarcodeItemWidget extends StatelessWidget {
