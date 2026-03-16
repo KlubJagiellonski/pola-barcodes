@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   barcode_widget: ^2.0.1
-  slang: ^4.13.0
+  slang: ^4.14.0
   slang_flutter: ^4.13.0
 
   # The following adds the Cupertino Icons font to your application.
