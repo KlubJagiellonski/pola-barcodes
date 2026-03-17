@@ -17,11 +17,19 @@ flutter pub get
 dart run slang
 ```
 
+This project also uses [json_serializable](https://pub.dev/packages/json_serializable) for JSON serialization.
+The generated file (`lib/barcode_item.g.dart`) is **not** committed to the repository and must also be generated:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
 ## Development
 
 ```bash
 flutter pub get
 dart run slang
+dart run build_runner build --delete-conflicting-outputs
 flutter run -d chrome
 ```
 
@@ -30,5 +38,6 @@ flutter run -d chrome
 ```bash
 flutter pub get
 dart run slang
+dart run build_runner build --delete-conflicting-outputs
 flutter build web
 ```

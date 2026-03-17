@@ -18,6 +18,7 @@
 lib/
   main.dart                  # App entry point; sets up locale and TranslationProvider
   barcode_item.dart          # BarcodeItem model; holds description, data string and Barcode type
+  barcode_item.g.dart        # Generated — do NOT edit manually (from json_serializable)
   barcode_item_widget.dart   # Widget that renders a single BarcodeItem
   barcodes_list_view.dart    # Scrollable list of BarcodeItem widgets
   barcodes_page.dart         # Main page (Scaffold); contains list + add-barcode panel
@@ -48,6 +49,9 @@ flutter pub get
 
 # Generate i18n code (required before build/run)
 dart run slang
+
+# Generate JSON serialization code (required before build/run)
+dart run build_runner build --delete-conflicting-outputs
 
 # Run in Chrome (development)
 flutter run -d chrome
