@@ -31,12 +31,11 @@ dependencies:
   flutter:
     sdk: flutter
   barcode_widget: ^2.0.1
+  cupertino_icons: ^1.0.6
+  json_annotation: ^4.9.0
   slang: ^4.14.0
   slang_flutter: ^4.13.0
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.6
+  web: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +46,9 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
+  build_runner: ^2.4.9
   flutter_lints: ^6.0.0
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

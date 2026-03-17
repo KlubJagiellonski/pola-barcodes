@@ -12,6 +12,7 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
     - lib/i18n/strings.g.dart
+    - lib/**/*.g.dart
 
 linter:
   # The lint rules applied to this project can be customized in the

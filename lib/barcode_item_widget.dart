@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'barcode_item.dart';
+import 'barcode_type.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
 class BarcodeItemWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class BarcodeItemWidget extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         BarcodeWidget(
-          barcode: barcode.type,
+          barcode: barcode.type.barcode,
           data: barcode.data,
           width: 200,
           height: 100,

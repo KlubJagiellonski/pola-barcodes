@@ -1,6 +1,7 @@
-import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'barcode_item.dart';
+import 'barcode_storage.dart';
+import 'barcode_type.dart';
 import 'barcodes_list_view.dart';
 import 'barcodes_panel.dart';
 import 'i18n/strings.g.dart';
@@ -18,7 +19,17 @@ class BarcodesPage extends StatefulWidget {
 }
 
 class BarcodesPageState extends State<BarcodesPage> {
-  void _addBarcode(String description, String data, Barcode type) {
+  @override
+  void initState() {
+    super.initState();
+    final stored = loadBarcodesFromStorage();
+    if (stored != null) {
+      widget.barcodes.clear();
+      widget.barcodes.addAll(stored);
+    }
+  }
+
+  void _addBarcode(String description, String data, BarcodeType type) {
     if (description.isNotEmpty && data.isNotEmpty) {
       setState(() {
         widget.barcodes.add(
@@ -28,6 +39,7 @@ class BarcodesPageState extends State<BarcodesPage> {
             type: type,
           ),
         );
+        saveBarcodesToStorage(widget.barcodes);
       });
     }
   }
