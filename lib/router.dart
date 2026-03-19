@@ -14,31 +14,26 @@ GoRouter createRouter(List<BarcodeItem> barcodes) {
       GoRoute(
         path: '/ean13/:data',
         builder: (context, state) {
-          final data = state.pathParameters['data']!;
-          final description =
-              state.uri.queryParameters['description'] ?? data;
-          final barcode = BarcodeItem(
-            description: description,
-            data: data,
-            type: BarcodeType.ean13,
-          );
-          return BarcodeDetailPage(barcode: barcode);
+          return _buildBarcodeDetailPage(state, BarcodeType.ean13);
         },
       ),
       GoRoute(
         path: '/ean8/:data',
         builder: (context, state) {
-          final data = state.pathParameters['data']!;
-          final description =
-              state.uri.queryParameters['description'] ?? data;
-          final barcode = BarcodeItem(
-            description: description,
-            data: data,
-            type: BarcodeType.ean8,
-          );
-          return BarcodeDetailPage(barcode: barcode);
+          return _buildBarcodeDetailPage(state, BarcodeType.ean8);
         },
       ),
     ],
   );
+}
+
+BarcodeDetailPage _buildBarcodeDetailPage(GoRouterState state, BarcodeType type) {
+  final data = state.pathParameters['data']!;
+  final description = state.uri.queryParameters['description'] ?? data;
+  final barcode = BarcodeItem(
+    description: description,
+    data: data,
+    type: type,
+  );
+  return BarcodeDetailPage(barcode: barcode);
 }
