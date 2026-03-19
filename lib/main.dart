@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
 import 'i18n/strings.g.dart';
 import 'barcode_item.dart';
@@ -9,6 +10,7 @@ import 'barcodes_page.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
+  usePathUrlStrategy();
   runApp(TranslationProvider(child: const MyApp()));
 }
 
