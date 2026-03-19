@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'barcode_item.dart';
-import 'barcode_detail_page.dart';
 import 'barcode_item_widget.dart';
 
 class BarcodesListView extends StatelessWidget {
@@ -42,14 +42,7 @@ class BarcodesListView extends StatelessWidget {
   Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
     return Expanded(
       child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BarcodeDetailPage(barcode: barcode),
-            ),
-          );
-        },
+        onTap: () => context.push('/barcode/${barcode.data}'),
         child: BarcodeItemWidget(barcode: barcode),
       ),
     );

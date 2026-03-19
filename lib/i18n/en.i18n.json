@@ -1,6 +1,7 @@
 {
     "appTitle": "Pola test codes",
     "barcodeList": "Barcode List",
+    "barcodeNotFound": "Barcode ${data} not found",
     "description": "Description",
     "code": "Barcode",
     "addCode": "Add Barcode",
