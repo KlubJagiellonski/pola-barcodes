@@ -42,7 +42,9 @@ class BarcodesListView extends StatelessWidget {
   Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => context.push('/barcode/${barcode.data}'),
+        onTap: () => context.push(
+          '/${barcode.type.name}/${barcode.data}?description=${Uri.encodeComponent(barcode.description)}',
+        ),
         child: BarcodeItemWidget(barcode: barcode),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'i18n/strings.g.dart';
 import 'barcode_item.dart';
 import 'barcode_detail_page.dart';
+import 'barcode_type.dart';
 import 'barcodes_page.dart';
 
 void main() {
@@ -32,20 +33,30 @@ class _MyAppState extends State<MyApp> {
           builder: (context, state) => BarcodesPage(barcodes: _barcodes!),
         ),
         GoRoute(
-          path: '/barcode/:data',
+          path: '/ean13/:data',
           builder: (context, state) {
             final data = state.pathParameters['data']!;
-            final barcode =
-                _barcodes!.where((b) => b.data == data).firstOrNull;
-            if (barcode == null) {
-              return Scaffold(
-                appBar: AppBar(),
-                body: Center(
-                  child: Text(
-                      Translations.of(context).barcodeNotFound(data: data)),
-                ),
-              );
-            }
+            final description =
+                state.uri.queryParameters['description'] ?? data;
+            final barcode = BarcodeItem(
+              description: description,
+              data: data,
+              type: BarcodeType.ean13,
+            );
+            return BarcodeDetailPage(barcode: barcode);
+          },
+        ),
+        GoRoute(
+          path: '/ean8/:data',
+          builder: (context, state) {
+            final data = state.pathParameters['data']!;
+            final description =
+                state.uri.queryParameters['description'] ?? data;
+            final barcode = BarcodeItem(
+              description: description,
+              data: data,
+              type: BarcodeType.ean8,
+            );
             return BarcodeDetailPage(barcode: barcode);
           },
         ),
