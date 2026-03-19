@@ -1,15 +1,24 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'i18n/strings.g.dart';
 import 'barcode_item.dart';
 import 'barcode_detail_page.dart';
 import 'barcode_type.dart';
 import 'barcodes_page.dart';
 
-GoRouter createRouter(List<BarcodeItem> barcodes) {
+GoRouter createRouter(Map<String, BarcodeItem> barcodes) {
   return GoRouter(
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => BarcodesPage(barcodes: barcodes),
+        builder: (context, state) =>
+            BarcodesPage(barcodes: barcodes.values.toList()),
+      ),
+      GoRoute(
+        path: '/code/:name',
+        builder: (context, state) {
+          return _buildCode(context, state, barcodes);
+        },
       ),
       GoRoute(
         path: '/ean13/:data',
@@ -35,5 +44,20 @@ BarcodeDetailPage _buildBarcodeDetailPage(GoRouterState state, BarcodeType type)
     data: data,
     type: type,
   );
+  return BarcodeDetailPage(barcode: barcode);
+}
+
+BarcodeDetailPage _buildCode(BuildContext context, GoRouterState state, Map<String, BarcodeItem> barcodes) {
+  final name = state.pathParameters['name']!;
+  final barcode = barcodes[name];
+  if (barcode == null) {
+    return BarcodeDetailPage(
+      barcode: BarcodeItem(
+        description: Translations.of(context).barcodeNotFound(data: name),
+        data: '',
+        type: BarcodeType.ean13,
+      ),
+    );
+  }
   return BarcodeDetailPage(barcode: barcode);
 }
