@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'i18n/strings.g.dart';
 import 'barcode_item.dart';
 import 'barcode_detail_page.dart';
-import 'barcode_storage.dart';
 import 'barcodes_page.dart';
 
 void main() {
@@ -58,8 +57,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     final translations = Translations.of(context);
     if (_router == null) {
-      _barcodes =
-          loadBarcodesFromStorage() ?? BarcodeItem.barcodes(translations);
+      _barcodes = BarcodeItem.barcodes(translations);
       _router = _createRouter();
     }
     return MaterialApp.router(

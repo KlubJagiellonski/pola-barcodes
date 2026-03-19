@@ -19,27 +19,28 @@ class BarcodesPage extends StatefulWidget {
 }
 
 class BarcodesPageState extends State<BarcodesPage> {
+  late final List<BarcodeItem> _userBarcodes;
+
+  List<BarcodeItem> get _allBarcodes =>
+      [...widget.barcodes, ..._userBarcodes];
+
   @override
   void initState() {
     super.initState();
-    final stored = loadBarcodesFromStorage();
-    if (stored != null) {
-      widget.barcodes.clear();
-      widget.barcodes.addAll(stored);
-    }
+    _userBarcodes = loadBarcodesFromStorage() ?? [];
   }
 
   void _addBarcode(String description, String data, BarcodeType type) {
     if (description.isNotEmpty && data.isNotEmpty) {
       setState(() {
-        widget.barcodes.add(
+        _userBarcodes.add(
           BarcodeItem(
             description: description,
             data: data,
             type: type,
           ),
         );
-        saveBarcodesToStorage(widget.barcodes);
+        saveBarcodesToStorage(_userBarcodes);
       });
     }
   }
@@ -55,7 +56,7 @@ class BarcodesPageState extends State<BarcodesPage> {
         child: Column(
           children: [
             Expanded(
-              child: BarcodesListView(barcodes: widget.barcodes),
+              child: BarcodesListView(barcodes: _allBarcodes),
             ),
             const SizedBox(height: 8.0),
             BarcodesPanel(onAddBarcode: _addBarcode),
