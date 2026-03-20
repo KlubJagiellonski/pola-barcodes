@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>pola_barcodes</title>
+  <script>
+    // This script is part of the SPA routing workaround for GitHub Pages.
+    // When GitHub Pages returns a 404, this file is served. The script below
+    // encodes the original path into the query string and redirects to the
+    // root index.html, which then decodes it and restores the correct URL
+    // via window.history.replaceState before Flutter initializes.
+    //
+    // pathSegmentsToKeep = 1 preserves the project-name segment
+    // (e.g. /pola-barcodes/) in the redirect URL.
+    //
+    // See https://github.com/rafgrstdev/spa-github-pages for more details.
+    var pathSegmentsToKeep = 1;
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+</body>
+</html>
