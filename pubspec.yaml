@@ -30,8 +30,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+
   barcode_widget: ^2.0.1
   cupertino_icons: ^1.0.6
+  go_router: ^14.6.1
   json_annotation: ^4.9.0
   slang: ^4.14.0
   slang_flutter: ^4.13.0

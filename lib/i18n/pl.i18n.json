@@ -1,6 +1,7 @@
 {
     "appTitle": "Kody testowe poli",
     "barcodeList": "Lista Kodów Kreskowych",
+    "barcodeNotFound": "Nie znaleziono kodu kreskowego ${data}",
     "description": "Opis",
     "code": "Kod kreskowy",
     "addCode": "Dodaj kod kreskowy",

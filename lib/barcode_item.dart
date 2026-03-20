@@ -21,48 +21,48 @@ class BarcodeItem {
 
   Map<String, dynamic> toJson() => _$BarcodeItemToJson(this);
 
-  static List<BarcodeItem> barcodes(Translations translations) {
-    return [
-      BarcodeItem(
+  static Map<String, BarcodeItem> barcodes(Translations translations) {
+    return {
+      'companyNotVerified': BarcodeItem(
           description: translations.barcodesDescription.companyNotVerified,
           data: "5905499300707",
           type: BarcodeType.ean13),
-      BarcodeItem(
+      'companyVerifiedWithFullScores': BarcodeItem(
           description:
               translations.barcodesDescription.companyVerifiedWithFullScores,
           data: "5907632637572",
           type: BarcodeType.ean13),
-      BarcodeItem(
+      'companyVerifiedWithIncompleteScores': BarcodeItem(
           description: translations
               .barcodesDescription.companyVerifiedWithIncompleteScores,
           data: "5900497025454",
           type: BarcodeType.ean13),
-      BarcodeItem(
+      'internalCode': BarcodeItem(
           description: translations.barcodesDescription.internalCode,
           data: "00000000",
           type: BarcodeType.ean8),
-      BarcodeItem(
+      'companyRegisteredOutsidePoland': BarcodeItem(
           description:
               translations.barcodesDescription.companyRegisteredOutsidePoland,
           data: "8680861069075",
           type: BarcodeType.ean13),
-      BarcodeItem(
+      'companyRegisteredIn': BarcodeItem(
           description: translations.barcodesDescription.companyRegisteredIn,
           data: "5090000000006",
           type: BarcodeType.ean13),
-      BarcodeItem(
+      'lidlOwnBrand': BarcodeItem(
           description: translations.barcodesDescription.lidlOwnBrand,
           data: "20982515",
           type: BarcodeType.ean8),
-      BarcodeItem(
+      'polaFriend': BarcodeItem(
           description: translations.barcodesDescription.polaFriend,
           data: "5906395053018",
           type: BarcodeType.ean13),
-      BarcodeItem(
+      'extendedCompanyDescription': BarcodeItem(
           description:
               translations.barcodesDescription.extendedCompanyDescription,
           data: "9771644705002",
           type: BarcodeType.ean13),
-    ];
+    };
   }
 }
