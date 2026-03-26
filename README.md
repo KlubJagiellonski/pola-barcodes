@@ -53,7 +53,7 @@ You can quickly create a custom barcode by using the EAN-13 or EAN-8 path:
 
 You can also add a description to any code using the `description` query parameter:
 
-- https://klubjagiellonski.github.io/pola-barcodes/ean8/55123457?description=przykladowyOpis
+- https://klubjagiellonski.github.io/pola-barcodes/ean8/55123457?description=exampleDescription
 
 ## Development
 
