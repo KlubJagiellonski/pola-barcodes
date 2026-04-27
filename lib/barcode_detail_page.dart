@@ -30,9 +30,14 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
         : _api.getByCode(widget.barcode.data);
   }
 
+  void _retry() {
+    setState(() {
+      _future = _api.getByCode(widget.barcode.data);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final t = Translations.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.barcode.description),
@@ -52,7 +57,7 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
             const SizedBox(width: 16),
             Expanded(
               child: SingleChildScrollView(
-                child: _buildJson(t),
+                child: _buildJson(),
               ),
             ),
           ],
@@ -61,16 +66,28 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
     );
   }
 
-  Widget _buildJson(Translations t) {
+  Widget _buildJson() {
     return FutureBuilder<dynamic>(
       future: _future,
       builder: (context, snapshot) {
+        final t = Translations.of(context);
         if (snapshot.connectionState != ConnectionState.done) {
           return Text(t.details.loading);
         }
         if (snapshot.hasError) {
-          return SelectableText(
-            t.details.error(error: snapshot.error.toString()),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SelectableText(
+                t.details.error(error: snapshot.error.toString()),
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton.icon(
+                onPressed: _retry,
+                icon: const Icon(Icons.refresh),
+                label: Text(t.details.retry),
+              ),
+            ],
           );
         }
         final data = snapshot.data;

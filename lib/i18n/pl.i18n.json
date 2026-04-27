@@ -25,6 +25,7 @@
     "details": {
         "loading": "Ładowanie...",
         "error": "Nie udało się pobrać danych: ${error}",
-        "noData": "Brak danych"
+        "noData": "Brak danych",
+        "retry": "Ponów"
     }
 }

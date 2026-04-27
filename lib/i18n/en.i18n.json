@@ -25,6 +25,7 @@
     "details": {
         "loading": "Loading...",
         "error": "Failed to load data: ${error}",
-        "noData": "No data available"
+        "noData": "No data available",
+        "retry": "Retry"
     }
 }
