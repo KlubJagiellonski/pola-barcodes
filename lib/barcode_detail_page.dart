@@ -70,40 +70,85 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
     return FutureBuilder<dynamic>(
       future: _future,
       builder: (context, snapshot) {
-        final t = Translations.of(context);
         if (snapshot.connectionState != ConnectionState.done) {
-          return Text(t.details.loading);
+          return const _LoadingView();
         }
         if (snapshot.hasError) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SelectableText(
-                t.details.error(error: snapshot.error.toString()),
-              ),
-              const SizedBox(height: 8),
-              ElevatedButton.icon(
-                onPressed: _retry,
-                icon: const Icon(Icons.refresh),
-                label: Text(t.details.retry),
-              ),
-            ],
+          return _ErrorView(
+            error: snapshot.error!,
+            onRetry: _retry,
           );
         }
-        final data = snapshot.data;
-        if (data == null) {
-          return Text(t.details.noData);
-        }
-        const encoder = JsonEncoder.withIndent('  ');
-        final pretty = encoder.convert(data);
-        return SelectableText(
-          pretty,
-          style: const TextStyle(
-            fontFamily: 'monospace',
-            fontSize: 14,
-          ),
-        );
+        return _JsonView(data: snapshot.data);
       },
+    );
+  }
+}
+
+class _LoadingView extends StatelessWidget {
+  const _LoadingView();
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(
+          width: 16,
+          height: 16,
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+        const SizedBox(width: 8),
+        Text(t.details.loading),
+      ],
+    );
+  }
+}
+
+class _ErrorView extends StatelessWidget {
+  final Object error;
+  final VoidCallback onRetry;
+
+  const _ErrorView({required this.error, required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SelectableText(t.details.error(error: error.toString())),
+        const SizedBox(height: 8),
+        ElevatedButton.icon(
+          onPressed: onRetry,
+          icon: const Icon(Icons.refresh),
+          label: Text(t.details.retry),
+        ),
+      ],
+    );
+  }
+}
+
+class _JsonView extends StatelessWidget {
+  final dynamic data;
+
+  const _JsonView({required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    if (data == null) {
+      return Text(t.details.noData);
+    }
+    const encoder = JsonEncoder.withIndent('  ');
+    final pretty = encoder.convert(data);
+    return SelectableText(
+      pretty,
+      style: const TextStyle(
+        fontFamily: 'monospace',
+        fontSize: 14,
+      ),
     );
   }
 }
