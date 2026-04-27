@@ -21,5 +21,10 @@
         "lidlOwnBrand": "Lidl's own brand",
         "polaFriend": "Pola's Friend",
         "extendedCompanyDescription": "Extended company description"
+    },
+    "details": {
+        "loading": "Loading...",
+        "error": "Failed to load data: ${error}",
+        "noData": "No data available"
     }
 }

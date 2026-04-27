@@ -21,5 +21,10 @@
         "lidlOwnBrand": "Marka własna Lidla",
         "polaFriend": "Przyjaciel Poli",
         "extendedCompanyDescription": "Rozszerzony opis firmy"
+    },
+    "details": {
+        "loading": "Ładowanie...",
+        "error": "Nie udało się pobrać danych: ${error}",
+        "noData": "Brak danych"
     }
 }
