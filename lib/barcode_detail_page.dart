@@ -50,17 +50,33 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BarcodeItemWidget(barcode: widget.barcode),
-            const SizedBox(width: 16),
-            Expanded(
-              child: SingleChildScrollView(
-                child: _buildJson(),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth >= constraints.maxHeight) {
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BarcodeItemWidget(barcode: widget.barcode),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: _buildJson(),
+                    ),
+                  ),
+                ],
+              );
+            }
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BarcodeItemWidget(barcode: widget.barcode),
+                  const SizedBox(height: 16),
+                  _buildJson(),
+                ],
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
