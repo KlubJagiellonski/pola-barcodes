@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:web/web.dart' as web;
 import 'barcode_item.dart';
 import 'barcode_item_widget.dart';
 import 'barcode_type.dart';
@@ -83,11 +84,38 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
     );
   }
 
+  static bool _isHttpUrl(String data) {
+    final uri = Uri.tryParse(data);
+    return uri != null && (uri.scheme == 'http' || uri.scheme == 'https');
+  }
+
   Widget _buildJson() {
     if (widget.barcode.type == BarcodeType.qr) {
-      return Text(
-        Translations.of(context).details.qrMessage,
-        style: const TextStyle(fontSize: 16),
+      final t = Translations.of(context);
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            t.details.qrMessage,
+            style: const TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 8),
+          if (_isHttpUrl(widget.barcode.data))
+            InkWell(
+              onTap: () {
+                web.window.open(widget.barcode.data, '_blank');
+              },
+              child: Text(
+                widget.barcode.data,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                ),
+              ),
+            ),
+        ],
       );
     }
     return FutureBuilder<dynamic>(
