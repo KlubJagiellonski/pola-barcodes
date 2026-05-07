@@ -32,6 +32,12 @@ GoRouter createRouter(Map<String, BarcodeItem> barcodes) {
           return _buildBarcodeDetailPage(state, BarcodeType.ean8);
         },
       ),
+      GoRoute(
+        path: '/qrCode/:data',
+        builder: (context, state) {
+          return _buildBarcodeDetailPage(state, BarcodeType.qr);
+        },
+      ),
     ],
   );
 }
