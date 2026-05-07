@@ -63,7 +63,7 @@ class BarcodeItem {
               translations.barcodesDescription.extendedCompanyDescription,
           data: "9771644705002",
           type: BarcodeType.ean13),
-      'qr': BarcodeItem(
+      'qrCode': BarcodeItem(
           description: translations.barcodesDescription.qr,
           data: "https://www.pola-app.pl/",
           type: BarcodeType.qr),

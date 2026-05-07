@@ -45,7 +45,7 @@ class BarcodesListView extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           if (barcode.type == BarcodeType.qr) {
-            context.push('/code/qr');
+            context.push('/code/qrCode');
           } else {
             context.push(
               '/${barcode.type.name}/${barcode.data}?description=${Uri.encodeComponent(barcode.description)}',
