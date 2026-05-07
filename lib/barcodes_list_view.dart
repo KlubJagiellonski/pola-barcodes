@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'barcode_item.dart';
 import 'barcode_item_widget.dart';
+import 'barcode_type.dart';
 
 class BarcodesListView extends StatelessWidget {
   const BarcodesListView({
@@ -42,9 +43,15 @@ class BarcodesListView extends StatelessWidget {
   Widget _buildBarcodeItem(BuildContext context, BarcodeItem barcode) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => context.push(
-          '/${barcode.type.name}/${barcode.data}?description=${Uri.encodeComponent(barcode.description)}',
-        ),
+        onTap: () {
+          if (barcode.type == BarcodeType.qr) {
+            context.push('/code/qr');
+          } else {
+            context.push(
+              '/${barcode.type.name}/${barcode.data}?description=${Uri.encodeComponent(barcode.description)}',
+            );
+          }
+        },
         child: BarcodeItemWidget(barcode: barcode),
       ),
     );

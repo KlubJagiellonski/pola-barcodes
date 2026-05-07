@@ -20,12 +20,14 @@
         "companyRegisteredIn": "Firma zarejerstrowana w ...",
         "lidlOwnBrand": "Marka własna Lidla",
         "polaFriend": "Przyjaciel Poli",
-        "extendedCompanyDescription": "Rozszerzony opis firmy"
+        "extendedCompanyDescription": "Rozszerzony opis firmy",
+        "qr": "Kod QR"
     },
     "details": {
         "loading": "Ładowanie...",
         "error": "Nie udało się pobrać danych: ${error}",
         "noData": "Brak danych",
-        "retry": "Ponów"
+        "retry": "Ponów",
+        "qrMessage": "Aplikacja Pola powinna ignorować inne kody niż kody kreskowe EAN13 i EAN8"
     }
 }
