@@ -41,6 +41,7 @@ You can share a predefined barcode by navigating to `/code/{codeName}`:
 - https://klubjagiellonski.github.io/pola-barcodes/code/lidlOwnBrand
 - https://klubjagiellonski.github.io/pola-barcodes/code/polaFriend
 - https://klubjagiellonski.github.io/pola-barcodes/code/extendedCompanyDescription
+- https://klubjagiellonski.github.io/pola-barcodes/code/qr
 
 ### Custom codes
 
