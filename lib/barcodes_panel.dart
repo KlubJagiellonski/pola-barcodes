@@ -84,6 +84,9 @@ class BarcodesPanelState extends State<BarcodesPanel> {
   }
 
   Widget _dropdownField(BuildContext context) {
+    final selectableTypes = custom.BarcodeType.values
+        .where((type) => type != custom.BarcodeType.qr)
+        .toList();
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +96,7 @@ class BarcodesPanelState extends State<BarcodesPanel> {
             decoration: InputDecoration(
               labelText: Translations.of(context).codeType,
             ),
-            items: custom.BarcodeType.values.map((custom.BarcodeType type) {
+            items: selectableTypes.map((custom.BarcodeType type) {
               return DropdownMenuItem<custom.BarcodeType>(
                 value: type,
                 child: Text(type.displayName),

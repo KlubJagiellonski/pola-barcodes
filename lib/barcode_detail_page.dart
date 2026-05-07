@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'barcode_item.dart';
 import 'barcode_item_widget.dart';
+import 'barcode_type.dart';
 import 'i18n/strings.g.dart';
 import 'pola_api.dart';
 
@@ -25,7 +26,7 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
   void initState() {
     super.initState();
     _api = widget.api ?? PolaApi();
-    _future = widget.barcode.data.isEmpty
+    _future = (widget.barcode.data.isEmpty || widget.barcode.type == BarcodeType.qr)
         ? Future.value(null)
         : _api.getByCode(widget.barcode.data);
   }
@@ -83,6 +84,12 @@ class _BarcodeDetailPageState extends State<BarcodeDetailPage> {
   }
 
   Widget _buildJson() {
+    if (widget.barcode.type == BarcodeType.qr) {
+      return Text(
+        Translations.of(context).details.qrMessage,
+        style: const TextStyle(fontSize: 16),
+      );
+    }
     return FutureBuilder<dynamic>(
       future: _future,
       builder: (context, snapshot) {

@@ -20,12 +20,14 @@
         "companyRegisteredIn": "Company registered in...",
         "lidlOwnBrand": "Lidl's own brand",
         "polaFriend": "Pola's Friend",
-        "extendedCompanyDescription": "Extended company description"
+        "extendedCompanyDescription": "Extended company description",
+        "qr": "QR Code"
     },
     "details": {
         "loading": "Loading...",
         "error": "Failed to load data: ${error}",
         "noData": "No data available",
-        "retry": "Retry"
+        "retry": "Retry",
+        "qrMessage": "Pola app should ignore other codes than EAN13 and EAN8 barcodes"
     }
 }

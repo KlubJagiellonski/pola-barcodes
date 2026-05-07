@@ -5,6 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 enum BarcodeType {
   ean13,
   ean8,
+  qr,
 }
 
 extension BarcodeTypeExtension on BarcodeType {
@@ -14,6 +15,8 @@ extension BarcodeTypeExtension on BarcodeType {
         return 'EAN13';
       case BarcodeType.ean8:
         return 'EAN8';
+      case BarcodeType.qr:
+        return 'QR';
     }
   }
 
@@ -23,6 +26,8 @@ extension BarcodeTypeExtension on BarcodeType {
         return Barcode.ean13();
       case BarcodeType.ean8:
         return Barcode.ean8();
+      case BarcodeType.qr:
+        return Barcode.qrCode();
     }
   }
 }
