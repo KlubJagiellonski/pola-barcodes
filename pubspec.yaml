@@ -38,7 +38,7 @@ dependencies:
   go_router: ^17.2.3
   http: ^1.2.2
   json_annotation: ^4.9.0
-  slang: ^4.14.0
+  slang: ^4.15.0
   slang_flutter: ^4.13.0
   web: ^1.1.0
 
