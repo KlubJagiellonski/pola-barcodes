@@ -39,7 +39,7 @@ dependencies:
   http: ^1.2.2
   json_annotation: ^4.12.0
   slang: ^4.16.0
-  slang_flutter: ^4.15.0
+  slang_flutter: ^4.17.0
   web: ^1.1.0
 
 dev_dependencies:
