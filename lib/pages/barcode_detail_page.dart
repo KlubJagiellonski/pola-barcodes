@@ -111,13 +111,12 @@ class BarcodeDetailPageState extends State<BarcodeDetailPage> {
       css('&').styles(
         display: .flex,
         padding: .all(16.px),
-        flexWrap: .wrap,
         alignItems: .start,
         gap: .all(16.px),
       ),
       css('.detail-json').styles(
-        minWidth: 280.px,
-        flex: Flex(grow: 1, basis: 320.px),
+        minWidth: 0.px,
+        flex: const Flex(grow: 1),
       ),
       css('.detail-json p').styles(
         margin: .zero,
@@ -159,6 +158,12 @@ class BarcodeDetailPageState extends State<BarcodeDetailPage> {
           backgroundColor: AppColors.redDark,
         ),
       ]),
+    ]),
+    // Matches the original layout rule: side-by-side when wider than tall,
+    // stacked when taller than wide.
+    css.media(const MediaQuery.screen(orientation: .portrait), [
+      css('.detail-content').styles(flexDirection: .column),
+      css('.detail-json').styles(width: 100.percent),
     ]),
     css.keyframes('spin', {
       'from': const Styles(raw: {'transform': 'rotate(0deg)'}),
