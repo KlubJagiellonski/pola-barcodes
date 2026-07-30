@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
+import '../constants/icons.dart';
 import '../constants/theme.dart';
 
 class Header extends StatelessComponent {
@@ -19,6 +20,13 @@ class Header extends StatelessComponent {
     return header(classes: 'app-bar', [
       if (showHomeLink) const Link(to: '/', classes: 'home-link', child: .text('⌂')),
       h1([.text(title)]),
+      a(
+        href: 'https://github.com/KlubJagiellonski/pola-barcodes',
+        target: Target.blank,
+        classes: 'github-link',
+        attributes: {'rel': 'noopener noreferrer', 'aria-label': 'GitHub'},
+        [RawText(AppIcons.github)],
+      ),
     ]);
   }
 
@@ -47,6 +55,13 @@ class Header extends StatelessComponent {
         fontSize: 28.px,
         textDecoration: const TextDecoration(line: .none),
         lineHeight: 1.em,
+      ),
+      css('.github-link').styles(
+        display: .flex,
+        alignItems: .center,
+        color: Colors.white,
+        lineHeight: 0.em,
+        raw: {'margin-left': 'auto'},
       ),
     ]),
   ];
