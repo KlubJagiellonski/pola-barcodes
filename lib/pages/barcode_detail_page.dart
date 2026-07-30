@@ -159,8 +159,6 @@ class BarcodeDetailPageState extends State<BarcodeDetailPage> {
         ),
       ]),
     ]),
-    // Matches the original layout rule: side-by-side when wider than tall,
-    // stacked when taller than wide.
     css.media(const MediaQuery.screen(orientation: .portrait), [
       css('.detail-content').styles(flexDirection: .column),
       css('.detail-json').styles(width: 100.percent),
