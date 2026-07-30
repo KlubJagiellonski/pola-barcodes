@@ -20,7 +20,7 @@ dev_dependencies:
   build_web_compilers: ^4.8.0
   jaspr_builder: ^0.23.2
   json_serializable: ^6.13.2
-  lints: ^5.0.0
+  lints: ^6.1.0
 
 jaspr:
   mode: static
