@@ -9,14 +9,16 @@ class BarcodeView extends StatelessComponent {
   const BarcodeView({
     super.key,
     required this.barcode,
+    this.showDescription = true,
   });
 
   final BarcodeItem barcode;
+  final bool showDescription;
 
   @override
   Component build(BuildContext context) {
     return div(classes: 'barcode-view', [
-      span(classes: 'barcode-description', [.text(barcode.description)]),
+      if (showDescription) span(classes: 'barcode-description', [.text(barcode.description)]),
       _barcodeSvg(),
     ]);
   }

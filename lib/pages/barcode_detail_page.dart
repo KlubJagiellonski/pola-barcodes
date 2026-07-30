@@ -70,7 +70,7 @@ class BarcodeDetailPageState extends State<BarcodeDetailPage> {
     return div(classes: 'page', [
       Header(title: _barcode.description, showHomeLink: true),
       div(classes: 'page-content detail-content', [
-        BarcodeView(barcode: _barcode),
+        BarcodeView(barcode: _barcode, showDescription: false),
         div(classes: 'detail-json', [_buildJson()]),
       ]),
     ]);
