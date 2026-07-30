@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:web/web.dart' as web;
+import 'package:universal_web/web.dart' as web;
 import 'barcode_item.dart';
 
 const _storageKey = 'pola_barcodes';

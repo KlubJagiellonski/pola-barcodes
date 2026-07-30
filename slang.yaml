@@ -1,4 +1,6 @@
-base_locale: en
+base_locale: pl
 input_directory: lib/i18n
 input_file_pattern: .i18n.json
 output_file_name: strings.g.dart
+flutter_integration: false
+lazy: false

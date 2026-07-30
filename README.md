@@ -1,19 +1,20 @@
 # pola_barcodes
 
-A Flutter web application for displaying and managing barcodes used in the Pola project.
+A [Jaspr](https://github.com/schultek/jaspr) web application for displaying and managing barcodes used in the Pola project.
+The site is statically pre-rendered at build time and hydrated on the client.
 
 **Live app:** https://klubjagiellonski.github.io/pola-barcodes/
 
 ## Internationalization (i18n)
 
 This project uses [slang](https://pub.dev/packages/slang) for internationalization.
-Translation source files are located in `lib/i18n/` (e.g. `strings.i18n.json`, `strings-pl.i18n.json`).
+Translation source files are located in `lib/i18n/` (e.g. `en.i18n.json`, `pl.i18n.json`).
 
 The generated Dart file (`lib/i18n/strings.g.dart`) is **not** committed to the repository.
 It must be generated before building or running the app:
 
 ```bash
-flutter pub get
+dart pub get
 dart run slang
 ```
 
@@ -58,18 +59,31 @@ You can also add a description to any code using the `description` query paramet
 
 ## Development
 
+Requires the [Dart SDK](https://dart.dev/get-dart) (>= 3.10) and the Jaspr CLI:
+
 ```bash
-flutter pub get
+dart pub global activate jaspr_cli
+```
+
+Then:
+
+```bash
+dart pub get
 dart run slang
 dart run build_runner build --delete-conflicting-outputs
-flutter run -d chrome
+jaspr serve
 ```
+
+The app is served at http://localhost:8080 with hot reload.
 
 ## Building
 
 ```bash
-flutter pub get
+dart pub get
 dart run slang
-dart run build_runner build --delete-conflicting-outputs
-flutter build web
+jaspr build --dart-define=BASE_PATH=/pola-barcodes/
 ```
+
+The static site is generated into `build/jaspr/`. The `BASE_PATH` define sets the
+`<base href>` for hosting under a sub-path (GitHub Pages project site); omit it
+when hosting at the domain root.
