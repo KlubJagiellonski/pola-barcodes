@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../barcode_type.dart';
+import '../constants/theme.dart';
 import '../i18n/strings.g.dart';
 
 class BarcodesPanel extends StatefulComponent {
@@ -132,13 +133,13 @@ class BarcodesPanelState extends State<BarcodesPanel> {
         flex: const Flex(grow: 1, basis: .auto),
       ),
       css('.field-label').styles(
-        color: const Color('#5f6368'),
+        color: AppColors.secondaryText,
         fontSize: 12.px,
       ),
       css('input, select').styles(
         height: 36.px,
         padding: .symmetric(horizontal: 8.px),
-        border: .all(style: .solid, color: const Color('#9aa0a6'), width: 1.px),
+        border: .all(style: .solid, color: AppColors.inputBorder, width: 1.px),
         radius: .circular(4.px),
         fontSize: 15.px,
         backgroundColor: Colors.white,
@@ -158,10 +159,10 @@ class BarcodesPanelState extends State<BarcodesPanel> {
           color: Colors.white,
           fontSize: 14.px,
           fontWeight: .w500,
-          backgroundColor: const Color('#0175C2'),
+          backgroundColor: AppColors.red,
         ),
         css('&:hover').styles(
-          backgroundColor: const Color('#015fa0'),
+          backgroundColor: AppColors.redDark,
         ),
       ]),
     ]),

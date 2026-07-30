@@ -2,6 +2,8 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
+import '../constants/theme.dart';
+
 class Header extends StatelessComponent {
   const Header({
     super.key,
@@ -30,7 +32,7 @@ class Header extends StatelessComponent {
         alignItems: .center,
         gap: .all(12.px),
         color: Colors.white,
-        backgroundColor: const Color('#0175C2'),
+        backgroundColor: AppColors.red,
       ),
       css('h1').styles(
         margin: .zero,

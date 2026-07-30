@@ -7,6 +7,7 @@ import '../barcode_item.dart';
 import '../barcode_type.dart';
 import '../components/barcode_view.dart';
 import '../components/header.dart';
+import '../constants/theme.dart';
 import '../i18n/strings.g.dart';
 import '../pola_api.dart';
 
@@ -136,7 +137,7 @@ class BarcodeDetailPageState extends State<BarcodeDetailPage> {
         display: .inlineBlock,
         width: 16.px,
         height: 16.px,
-        border: .all(style: .solid, color: const Color('#0175C2'), width: 2.px),
+        border: .all(style: .solid, color: AppColors.red, width: 2.px),
         radius: .circular(50.percent),
         raw: {
           'border-top-color': 'transparent',
@@ -152,10 +153,10 @@ class BarcodeDetailPageState extends State<BarcodeDetailPage> {
           cursor: .pointer,
           color: Colors.white,
           fontSize: 14.px,
-          backgroundColor: const Color('#0175C2'),
+          backgroundColor: AppColors.red,
         ),
         css('&:hover').styles(
-          backgroundColor: const Color('#015fa0'),
+          backgroundColor: AppColors.redDark,
         ),
       ]),
     ]),

@@ -8,6 +8,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 
 import 'app.dart';
+import 'constants/theme.dart';
 import 'i18n/strings.g.dart';
 // This file is generated automatically by Jaspr, do not remove or edit.
 import 'main.server.options.dart';
@@ -55,7 +56,7 @@ void main() {
         minHeight: 100.vh,
         padding: .zero,
         margin: .zero,
-        color: const Color('#1d1d1d'),
+        color: AppColors.text,
         backgroundColor: Colors.white,
         raw: {
           'font-family': "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
