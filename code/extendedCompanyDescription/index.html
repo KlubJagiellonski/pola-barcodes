@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <base href="/pola-barcodes/"/>
+    <meta charset="utf-8"/>
+    <style>
+      html, body {
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        color: #333333;
+        background-color: white;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link href="manifest.json" rel="manifest"/>
+    <link type="image/png" href="favicon.png" rel="icon"/>
+    <link href="icons/Icon-192.png" rel="apple-touch-icon"/>
+    <script>
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location));
+      
+    </script>
+    <!--$-->
+    <title>Rozszerzony opis firmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Testowe kody kreskowe dla projektu Pola."/>
+    <!--/-->
+    <script src="main.client.dart.js" defer></script>
+    <style>
+      .page {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+      }
+      .page-content {
+        padding: 8px;
+        overflow-y: auto;
+        flex-grow: 1;
+      }
+      .barcode-view {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 6px;
+      }
+      .barcode-view .barcode-description {
+        font-size: 17px;
+        font-weight: bold;
+      }
+      .barcode-view .barcode-error {
+        color: red;
+      }
+      .barcode-view .barcode-svg svg {
+        width: 200px;
+        height: 100px;
+      }
+      .barcode-view .barcode-svg.qr svg {
+        width: 100px;
+      }
+      .barcodes-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .barcode-tile {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        color: inherit;
+        text-decoration: none;
+      }
+      .barcodes-panel {
+        display: flex;
+        padding: 8px;
+        flex-wrap: wrap;
+        align-items: end;
+        gap: 10px;
+      }
+      .barcodes-panel .panel-field {
+        display: flex;
+        min-width: 140px;
+        flex-direction: column;
+        gap: 4px;
+        flex-grow: 1;
+        flex-basis: auto;
+      }
+      .barcodes-panel .field-label {
+        color: #5B5B5B;
+        font-size: 12px;
+      }
+      .barcodes-panel input, select {
+        height: 36px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border: solid #C4C4C4 1px;
+        border-radius: 4px;
+        font-size: 15px;
+        background-color: white;
+      }
+      .barcodes-panel .field-error {
+        min-height: 16px;
+        color: red;
+        font-size: 12px;
+      }
+      .barcodes-panel .add-button {
+        height: 36px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border: none;
+        border-radius: 18px;
+        cursor: pointer;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: #D8152F;
+      }
+      .barcodes-panel .add-button:hover {
+        background-color: #B01126;
+      }
+      .app-bar {
+        display: flex;
+        min-height: 56px;
+        padding-left: 16px;
+        padding-right: 16px;
+        align-items: center;
+        gap: 12px;
+        color: white;
+        background-color: #D8152F;
+      }
+      .app-bar h1 {
+        margin: 0;
+        overflow: hidden;
+        font-size: 20px;
+        font-weight: 500;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .app-bar .home-link {
+        color: white;
+        font-size: 28px;
+        text-decoration: none;
+        line-height: 1em;
+      }
+      .detail-content {
+        display: flex;
+        padding: 16px;
+        align-items: start;
+        gap: 16px;
+      }
+      .detail-content .detail-json {
+        min-width: 0px;
+        flex-grow: 1;
+      }
+      .detail-content .detail-json p {
+        margin: 0;
+        font-size: 16px;
+      }
+      .detail-content .json-view {
+        margin: 0;
+        overflow-x: auto;
+        font-size: 14px;
+      }
+      .detail-content .loading-view {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .detail-content .spinner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: solid #D8152F 2px;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: spin 800ms linear infinite;
+      }
+      .detail-content .retry-button {
+        height: 36px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border: none;
+        border-radius: 18px;
+        cursor: pointer;
+        color: white;
+        font-size: 14px;
+        background-color: #D8152F;
+      }
+      .detail-content .retry-button:hover {
+        background-color: #B01126;
+      }
+      @media screen and (orientation: portrait) {
+        .detail-content {
+          flex-direction: column;
+        }
+        .detail-json {
+          width: 100%;
+        }
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--@app-->
+    <div class="page">
+      <header class="app-bar"><a class="home-link" href="/">⌂</a><h1>Rozszerzony opis firmy</h1></header>
+      <div class="page-content detail-content">
+        <div class="barcode-view">
+          <div class="barcode-svg">
+            <svg viewBox="0.00000 0.00000 200.00000 100.00000" xmlns="http://www.w3.org/2000/svg"><path d="M 20.00000 0.00000 h 1.89474 v 90.00000 h -1.89474 z M 23.78947 0.00000 h 1.89474 v 90.00000 h -1.89474 z M 27.57895 0.00000 h 5.68421 v 75.00000 h -5.68421 z M 35.15789 0.00000 h 3.78947 v 75.00000 h -3.78947 z M 42.73684 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 50.31579 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 54.10526 0.00000 h 3.78947 v 75.00000 h -3.78947 z M 61.68421 0.00000 h 3.78947 v 75.00000 h -3.78947 z M 67.36842 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 71.15789 0.00000 h 7.57895 v 75.00000 h -7.57895 z M 82.52632 0.00000 h 5.68421 v 75.00000 h -5.68421 z M 90.10526 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 93.89474 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 101.47368 0.00000 h 3.78947 v 75.00000 h -3.78947 z M 107.15789 0.00000 h 1.89474 v 90.00000 h -1.89474 z M 110.94737 0.00000 h 1.89474 v 90.00000 h -1.89474 z M 114.73684 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 122.31579 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 128.00000 0.00000 h 5.68421 v 75.00000 h -5.68421 z M 137.47368 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 141.26316 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 146.94737 0.00000 h 5.68421 v 75.00000 h -5.68421 z M 154.52632 0.00000 h 5.68421 v 75.00000 h -5.68421 z M 164.00000 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 167.78947 0.00000 h 5.68421 v 75.00000 h -5.68421 z M 177.26316 0.00000 h 1.89474 v 75.00000 h -1.89474 z M 181.05263 0.00000 h 3.78947 v 75.00000 h -3.78947 z M 186.73684 0.00000 h 3.78947 v 75.00000 h -3.78947 z M 194.31579 0.00000 h 1.89474 v 90.00000 h -1.89474 z M 198.10526 0.00000 h 1.89474 v 90.00000 h -1.89474 z " style="fill: #000000"/><text style="fill: #000000; font-family: &quot;monospace&quot;; font-size: 20.00000px" x="0.00000" y="0.00000"><tspan style="text-anchor: end" x="18.10526" y="95.00000">9</tspan><tspan style="text-anchor: middle" x="32.31579" y="95.00000">7</tspan><tspan style="text-anchor: middle" x="45.57895" y="95.00000">7</tspan><tspan style="text-anchor: middle" x="58.84211" y="95.00000">1</tspan><tspan style="text-anchor: middle" x="72.10526" y="95.00000">6</tspan><tspan style="text-anchor: middle" x="85.36842" y="95.00000">4</tspan><tspan style="text-anchor: middle" x="98.63158" y="95.00000">4</tspan><tspan style="text-anchor: middle" x="121.36842" y="95.00000">7</tspan><tspan style="text-anchor: middle" x="134.63158" y="95.00000">0</tspan><tspan style="text-anchor: middle" x="147.89474" y="95.00000">5</tspan><tspan style="text-anchor: middle" x="161.15789" y="95.00000">0</tspan><tspan style="text-anchor: middle" x="174.42105" y="95.00000">0</tspan><tspan style="text-anchor: middle" x="187.68421" y="95.00000">2</tspan></text></svg>
+          </div>
+        </div>
+        <div class="detail-json"><div class="loading-view"><span class="spinner"></span><span>Ładowanie...</span></div></div>
+      </div>
+    </div>
+    <!--/@app-->
+  </body>
+</html>
