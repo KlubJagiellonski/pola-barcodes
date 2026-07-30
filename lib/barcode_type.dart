@@ -1,4 +1,4 @@
-import 'package:barcode_widget/barcode_widget.dart';
+import 'package:barcode/barcode.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonEnum()
