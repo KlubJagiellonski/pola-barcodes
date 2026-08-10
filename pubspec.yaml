@@ -10,7 +10,7 @@ dependencies:
   barcode: ^2.2.9
   http: ^1.2.2
   jaspr: ^0.23.3
-  jaspr_router: ^0.8.3
+  jaspr_router: ^0.9.0
   json_annotation: ^4.12.0
   slang: ^4.18.0
   universal_web: ^1.1.1
